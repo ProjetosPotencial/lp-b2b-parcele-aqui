@@ -1,0 +1,46 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+next-env.d.ts
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+Thumbs.db
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env*.local
+.env
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+
+# logs
+logs
+*.log
+
+# pasta de origem das imagens (já copiadas pra public/)
+/images-original
+/images-optimized
+
+# preview estático (regerado conforme necessário)
+preview.html
