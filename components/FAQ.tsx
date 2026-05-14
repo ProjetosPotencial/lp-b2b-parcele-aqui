@@ -9,14 +9,14 @@ export function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="bg-brand-gray-50 py-20 sm:py-24">
+    <section id="faq" className="bg-brand-beige-light py-20 sm:py-24">
       <div className="container-app grid items-start gap-12 lg:grid-cols-[1fr_1.2fr]">
         <div className="lg:sticky lg:top-28">
           <span className="badge">{faq.eyebrow}</span>
           <h2 className="mt-5 text-3xl font-bold leading-tight text-brand-black sm:text-4xl">
             {faq.title}
           </h2>
-          <div className="relative mt-8 aspect-[4/3] overflow-hidden rounded-3xl bg-brand-gray-100">
+          <div className="relative mt-8 aspect-[4/3] overflow-hidden rounded-3xl bg-brand-beige-light">
             <Image
               src={faq.image}
               alt="Cliente do Parcele Aqui sorrindo em um ambiente de trabalho"
@@ -61,7 +61,7 @@ export function FAQ() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <p className="px-6 pb-6 text-sm leading-relaxed text-brand-gray-700">
+                    <p className="px-6 pb-6 text-sm leading-relaxed text-brand-text-secondary">
                       {item.answer}
                     </p>
                   </div>

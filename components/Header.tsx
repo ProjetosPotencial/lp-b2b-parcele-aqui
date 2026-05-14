@@ -39,7 +39,7 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-brand-gray-700 transition hover:text-brand-black"
+              className="text-sm font-medium text-brand-text-secondary transition hover:text-brand-black"
             >
               {item.label}
             </Link>
@@ -76,7 +76,7 @@ export function Header() {
                 <Link
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
-                  className="block py-2 text-sm font-medium text-brand-gray-900"
+                  className="block py-2 text-sm font-medium text-brand-text-primary"
                 >
                   {item.label}
                 </Link>

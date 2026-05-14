@@ -9,12 +9,12 @@ export function Footer() {
       <div className="container-app grid gap-10 lg:grid-cols-[1.2fr_2fr]">
         <div>
           <Image src={brand.logo} alt="Parcele Aqui" width={140} height={32} className="h-8 w-auto" />
-          <p className="mt-4 max-w-sm text-sm text-brand-gray-700">{footer.description}</p>
+          <p className="mt-4 max-w-sm text-sm text-brand-text-secondary">{footer.description}</p>
         </div>
         <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
           {footer.columns.map((col) => (
             <div key={col.title}>
-              <h4 className="text-xs font-semibold uppercase tracking-widest text-brand-gray-500">
+              <h4 className="text-xs font-semibold uppercase tracking-widest text-brand-text-muted">
                 {col.title}
               </h4>
               <ul className="mt-4 space-y-2">
@@ -22,7 +22,7 @@ export function Footer() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-sm text-brand-gray-900 transition hover:text-brand-black"
+                      className="text-sm text-brand-text-primary transition hover:text-brand-black"
                     >
                       {link.label}
                     </Link>
@@ -33,7 +33,7 @@ export function Footer() {
           ))}
         </div>
       </div>
-      <div className="container-app mt-10 flex flex-col items-start justify-between gap-2 border-t border-brand-black/5 pt-6 text-xs text-brand-gray-500 sm:flex-row sm:items-center">
+      <div className="container-app mt-10 flex flex-col items-start justify-between gap-2 border-t border-brand-black/5 pt-6 text-xs text-brand-text-muted sm:flex-row sm:items-center">
         <p>{footer.legal}</p>
         <p>Feito com cuidado pelo time Grupo Potencial.</p>
       </div>

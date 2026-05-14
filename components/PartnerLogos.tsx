@@ -14,10 +14,10 @@ const logos = [
 export function PartnerLogos() {
   const { partnerLogos } = site;
   return (
-    <section className="border-y border-brand-black/5 bg-brand-gray-50 py-14">
+    <section className="border-y border-brand-black/5 bg-brand-beige-light py-14">
       <div className="container-app">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-widest text-brand-gray-500">
+          <p className="text-xs font-semibold uppercase tracking-widest text-brand-text-muted">
             {partnerLogos.eyebrow}
           </p>
           <h2 className="mt-3 text-xl font-bold text-brand-black sm:text-2xl">
@@ -31,7 +31,7 @@ export function PartnerLogos() {
             </div>
           ))}
         </div>
-        <p className="mt-6 text-center text-xs text-brand-gray-500">{partnerLogos.note}</p>
+        <p className="mt-6 text-center text-xs text-brand-text-muted">{partnerLogos.note}</p>
       </div>
     </section>
   );

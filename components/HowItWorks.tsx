@@ -16,7 +16,7 @@ export function HowItWorks() {
             </h2>
           </div>
           <div className="relative">
-            <div className="relative aspect-video overflow-hidden rounded-3xl bg-brand-gray-900">
+            <div className="relative aspect-video overflow-hidden rounded-3xl bg-brand-black">
               <Image
                 src={howItWorks.image}
                 alt="Equipe demonstrando o fluxo do Parcele Aqui"

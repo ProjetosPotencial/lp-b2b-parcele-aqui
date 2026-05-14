@@ -12,8 +12,8 @@ export function FinalCTA() {
           <h2 className="mt-5 text-3xl font-bold leading-tight text-brand-black sm:text-4xl lg:text-5xl">
             {finalCta.title}
           </h2>
-          <p className="mt-5 text-lg text-brand-gray-700">{finalCta.description}</p>
-          <div className="mt-8 hidden overflow-hidden rounded-3xl bg-brand-gray-100 lg:block">
+          <p className="mt-5 text-lg text-brand-text-secondary">{finalCta.description}</p>
+          <div className="mt-8 hidden overflow-hidden rounded-3xl bg-brand-beige-light lg:block">
             <div className="relative aspect-[16/10]">
               <Image
                 src={finalCta.image}

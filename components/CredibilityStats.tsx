@@ -17,7 +17,7 @@ export function CredibilityStats() {
               className="rounded-2xl border border-brand-yellow/40 bg-brand-yellow-light p-6"
             >
               <h3 className="text-base font-bold text-brand-black">{item.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-brand-gray-700">
+              <p className="mt-2 text-sm leading-relaxed text-brand-text-secondary">
                 {item.description}
               </p>
             </article>

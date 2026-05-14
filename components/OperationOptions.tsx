@@ -20,11 +20,11 @@ export function OperationOptions() {
             >
               <header>
                 <h3 className="text-2xl font-bold text-brand-black">{opt.title}</h3>
-                <p className="mt-1 text-sm text-brand-gray-500">{opt.subtitle}</p>
+                <p className="mt-1 text-sm text-brand-text-muted">{opt.subtitle}</p>
               </header>
               <ul className="mt-6 space-y-3">
                 {opt.bullets.map((b) => (
-                  <li key={b} className="flex items-start gap-3 text-sm text-brand-gray-900">
+                  <li key={b} className="flex items-start gap-3 text-sm text-brand-text-primary">
                     <span
                       className="mt-0.5 inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-brand-yellow"
                       aria-hidden
@@ -42,7 +42,7 @@ export function OperationOptions() {
         </div>
 
         <div className="mt-10">
-          <div className="relative aspect-[16/7] overflow-hidden rounded-4xl bg-brand-gray-100">
+          <div className="relative aspect-[16/7] overflow-hidden rounded-4xl bg-brand-beige-light">
             <Image
               src="/images/sections/secao-como-operar.png"
               alt="Pré-visualização do checkout Parcele Aqui em desktop"

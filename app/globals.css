@@ -3,9 +3,10 @@
 @tailwind utilities;
 
 :root {
-  --brand-yellow: #FFC72C;
-  --brand-black: #0A0A0A;
-  --brand-green: #0F7B3A;
+  --brand-yellow: #ffb800;
+  --brand-brown: #371b01;
+  --brand-black: #111111;
+  --brand-green: #0f7b3a;
 }
 
 @layer base {
@@ -13,7 +14,7 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-white text-brand-gray-900 antialiased;
+    @apply bg-white text-brand-text-primary antialiased;
     font-feature-settings: "ss01", "cv11";
   }
   h1, h2, h3, h4, h5, h6 {
@@ -26,13 +27,13 @@
     @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
   }
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-full bg-brand-yellow px-6 py-3 text-sm font-semibold text-brand-black transition hover:bg-brand-yellow-soft focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60;
+    @apply inline-flex items-center justify-center rounded-md bg-brand-yellow px-6 py-3 text-sm font-bold text-brand-brown transition hover:bg-brand-yellow-dark focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60;
   }
   .btn-secondary {
-    @apply inline-flex items-center justify-center rounded-full border border-brand-black/10 bg-white px-6 py-3 text-sm font-semibold text-brand-black transition hover:bg-brand-gray-50;
+    @apply inline-flex items-center justify-center rounded-md border-2 border-brand-black bg-white px-6 py-3 text-sm font-bold text-brand-black transition hover:bg-brand-black hover:text-white;
   }
   .badge {
-    @apply inline-flex items-center gap-2 rounded-full bg-brand-yellow-light px-3 py-1 text-xs font-semibold text-brand-black;
+    @apply inline-flex items-center gap-2 rounded-full bg-brand-yellow-light px-3 py-1 text-xs font-semibold text-brand-brown;
   }
 }
 

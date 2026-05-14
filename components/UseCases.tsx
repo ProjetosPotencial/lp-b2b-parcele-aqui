@@ -43,7 +43,7 @@ export function UseCases() {
                 {icons[idx]}
               </span>
               <h3 className="mt-5 text-lg font-bold text-brand-black">{item.title}</h3>
-              <p className="mt-2 text-sm text-brand-gray-700">{item.description}</p>
+              <p className="mt-2 text-sm text-brand-text-secondary">{item.description}</p>
             </article>
           ))}
         </div>

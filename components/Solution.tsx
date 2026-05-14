@@ -11,11 +11,11 @@ export function Solution() {
           <h2 className="mt-5 text-3xl font-bold leading-tight text-brand-black sm:text-4xl">
             {solution.title}
           </h2>
-          <p className="mt-5 text-lg text-brand-gray-700">{solution.description}</p>
+          <p className="mt-5 text-lg text-brand-text-secondary">{solution.description}</p>
           <dl className="mt-8 grid grid-cols-3 gap-4">
             {solution.highlights.map((h) => (
               <div key={h.label} className="rounded-2xl bg-brand-yellow-light p-4 text-center">
-                <dt className="text-xs font-semibold uppercase tracking-wide text-brand-gray-700">
+                <dt className="text-xs font-semibold uppercase tracking-wide text-brand-text-secondary">
                   {h.label}
                 </dt>
                 <dd className="mt-1 text-lg font-bold text-brand-black sm:text-xl">{h.value}</dd>
@@ -24,7 +24,7 @@ export function Solution() {
           </dl>
         </div>
         <div className="relative">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-4xl bg-brand-gray-100 shadow-card sm:aspect-[5/6]">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-4xl bg-brand-beige-light shadow-card sm:aspect-[5/6]">
             <Image
               src={solution.image}
               alt={solution.imageAlt}

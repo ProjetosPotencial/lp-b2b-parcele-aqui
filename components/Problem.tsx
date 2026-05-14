@@ -4,10 +4,10 @@ import { site } from '@/lib/site-data';
 export function Problem() {
   const { problem } = site;
   return (
-    <section className="bg-brand-gray-50 py-20 sm:py-24">
+    <section className="bg-brand-beige-light py-20 sm:py-24">
       <div className="container-app grid items-center gap-12 lg:grid-cols-2">
         <div className="order-2 lg:order-1">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-4xl bg-brand-gray-100 shadow-card sm:aspect-square">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-4xl bg-brand-beige-light shadow-card sm:aspect-square">
             <Image
               src={problem.image}
               alt={problem.imageAlt}
@@ -22,7 +22,7 @@ export function Problem() {
           <h2 className="mt-5 text-3xl font-bold leading-tight text-brand-black sm:text-4xl">
             {problem.title}
           </h2>
-          <p className="mt-5 text-lg text-brand-gray-700">{problem.description}</p>
+          <p className="mt-5 text-lg text-brand-text-secondary">{problem.description}</p>
           <ul className="mt-8 space-y-3">
             {problem.bullets.map((bullet) => (
               <li key={bullet} className="flex items-start gap-3">
@@ -34,7 +34,7 @@ export function Problem() {
                     <path d="M6 12l4 4 8-8" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </span>
-                <span className="text-base text-brand-gray-900">{bullet}</span>
+                <span className="text-base text-brand-text-primary">{bullet}</span>
               </li>
             ))}
           </ul>

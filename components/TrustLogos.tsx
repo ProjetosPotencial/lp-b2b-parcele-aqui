@@ -15,7 +15,7 @@ export function TrustLogos() {
     <section className="py-16 sm:py-20">
       <div className="container-app">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-widest text-brand-gray-500">
+          <p className="text-xs font-semibold uppercase tracking-widest text-brand-text-muted">
             {data.eyebrow}
           </p>
           <h2 className="mt-3 text-xl font-bold text-brand-black sm:text-2xl">

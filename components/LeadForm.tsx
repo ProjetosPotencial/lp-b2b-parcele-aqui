@@ -72,7 +72,7 @@ export function LeadForm() {
           </svg>
         </span>
         <h3 className="mt-5 text-xl font-bold text-brand-black">Recebemos seu contato.</h3>
-        <p className="mt-2 text-sm text-brand-gray-700">
+        <p className="mt-2 text-sm text-brand-text-secondary">
           Nosso time comercial vai entrar em contato em até 1 dia útil pelos canais informados.
         </p>
         <button
@@ -89,7 +89,7 @@ export function LeadForm() {
   return (
     <form onSubmit={onSubmit} className="rounded-3xl bg-white p-6 shadow-card sm:p-8" noValidate>
       <h3 className="text-xl font-bold text-brand-black">Fale com um especialista</h3>
-      <p className="mt-1 text-sm text-brand-gray-700">
+      <p className="mt-1 text-sm text-brand-text-secondary">
         Responda em 60 segundos. Sem compromisso, sem letras miúdas.
       </p>
       <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -169,7 +169,7 @@ export function LeadForm() {
         </div>
       </div>
 
-      <p className="mt-4 text-xs text-brand-gray-500">
+      <p className="mt-4 text-xs text-brand-text-muted">
         Ao enviar, você concorda com nossa política de privacidade e autoriza o contato comercial.
       </p>
 
@@ -191,12 +191,12 @@ export function LeadForm() {
 }
 
 const inputClass =
-  'block w-full rounded-xl border border-brand-black/10 bg-white px-4 py-3 text-sm text-brand-black placeholder:text-brand-gray-500 focus:border-brand-yellow focus:outline-none focus:ring-2 focus:ring-brand-yellow/40';
+  'block w-full rounded-xl border border-brand-black/10 bg-white px-4 py-3 text-sm text-brand-black placeholder:text-brand-text-muted focus:border-brand-yellow focus:outline-none focus:ring-2 focus:ring-brand-yellow/40';
 
 function Field({ label, required, children }: { label: string; required?: boolean; children: React.ReactNode }) {
   return (
     <label className="block">
-      <span className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-brand-gray-700">
+      <span className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-brand-text-secondary">
         {label} {required ? <span className="text-red-500">*</span> : null}
       </span>
       {children}

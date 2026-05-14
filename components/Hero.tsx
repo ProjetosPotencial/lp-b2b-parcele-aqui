@@ -13,7 +13,7 @@ export function Hero() {
           <h1 className="mt-5 text-4xl font-bold leading-[1.05] text-brand-black sm:text-5xl lg:text-6xl">
             {hero.title}
           </h1>
-          <p className="mt-5 text-lg text-brand-gray-700 sm:text-xl">{hero.subtitle}</p>
+          <p className="mt-5 text-lg text-brand-text-secondary sm:text-xl">{hero.subtitle}</p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link href={hero.cta.href} className="btn-primary">
               {hero.cta.label}
@@ -22,7 +22,7 @@ export function Hero() {
               {hero.ctaSecondary.label}
             </Link>
           </div>
-          <div className="mt-10 flex items-center gap-6 text-sm text-brand-gray-500">
+          <div className="mt-10 flex items-center gap-6 text-sm text-brand-text-muted">
             <div className="flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-brand-green" aria-hidden />
               <span>Aprovação em segundos</span>
@@ -35,7 +35,7 @@ export function Hero() {
         </div>
 
         <div className="relative">
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-4xl bg-brand-gray-100 shadow-card sm:aspect-[5/6]">
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-4xl bg-brand-beige-light shadow-card sm:aspect-[5/6]">
             <Image
               src={hero.image}
               alt={hero.imageAlt}
@@ -47,9 +47,9 @@ export function Hero() {
           </div>
           <div className="absolute -bottom-6 -left-6 hidden h-24 w-24 rounded-full bg-brand-yellow sm:block" aria-hidden />
           <div className="absolute -right-4 top-8 hidden rounded-2xl bg-white p-4 shadow-card sm:block">
-            <p className="text-xs font-semibold uppercase tracking-wide text-brand-gray-500">Em até</p>
+            <p className="text-xs font-semibold uppercase tracking-wide text-brand-text-muted">Em até</p>
             <p className="text-2xl font-bold text-brand-black">12x no cartão</p>
-            <p className="text-xs text-brand-gray-500">Você recebe à vista</p>
+            <p className="text-xs text-brand-text-muted">Você recebe à vista</p>
           </div>
         </div>
       </div>
