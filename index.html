@@ -230,8 +230,12 @@
     /* header mobile (Figma node 6027:13257): pad lateral 32, vertical 16, altura auto */
     #header .container-fig { height: auto !important; padding-top: 16px !important; padding-bottom: 16px !important; padding-left: 32px !important; padding-right: 32px !important; }
 
-    /* padding lateral das sections: 107px -> 24px */
-    section, footer { padding-left: 24px !important; padding-right: 24px !important; }
+    /* padding lateral das sections: 107px -> 36px (Figma mobile) */
+    section, footer { padding-left: 36px !important; padding-right: 36px !important; }
+
+    /* RESPIRO PADRÃO DO TOPO: 56px de padding-top em todas as dobras (Figma mobile).
+       O hero (#solucao) é exceção: tem diagramação própria (imagem cola no topo). */
+    section:not(#solucao) { padding-top: 56px !important; }
 
     /* containers fixos viram fluidos */
     section [style*="max-width: 1153px"],
@@ -484,11 +488,11 @@
 
         <!-- Setas -->
         <div class="hero-arrows absolute flex flex-col z-20" style="top: 444px; left: 4px; gap: 16px;">
-          <button id="hero-prev" class="inline-flex items-center justify-center transition" style="background: #371b01; padding: 16px; border-radius: 8px; box-shadow: 0 4px 5px rgba(0,0,0,0.25); width: 56px; height: 56px;" aria-label="Anterior" onmouseover="this.style.background='#ffb800'; this.querySelector('svg path').setAttribute('stroke', '#371b01');" onmouseout="this.style.background='#371b01'; this.querySelector('svg path').setAttribute('stroke', '#ffb800');">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M12 19l-7-7 7-7" stroke="#ffb800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <button id="hero-prev" class="inline-flex items-center justify-center transition" style="padding: 16px; border-radius: 8px; box-shadow: 0 4px 5px rgba(0,0,0,0.25); width: 56px; height: 56px;" aria-label="Anterior">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M12 19l-7-7 7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
-          <button id="hero-next" class="inline-flex items-center justify-center transition" style="background: #ffb800; padding: 16px; border-radius: 8px; box-shadow: 0 4px 5px rgba(0,0,0,0.25); width: 56px; height: 56px;" aria-label="Próximo" onmouseover="this.style.background='#371b01'; this.querySelector('svg path').setAttribute('stroke', '#ffb800');" onmouseout="this.style.background='#ffb800'; this.querySelector('svg path').setAttribute('stroke', '#371b01');">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="#371b01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <button id="hero-next" class="inline-flex items-center justify-center transition" style="padding: 16px; border-radius: 8px; box-shadow: 0 4px 5px rgba(0,0,0,0.25); width: 56px; height: 56px;" aria-label="Próximo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
         </div>
 
@@ -511,6 +515,16 @@
   .hero-slides-area .hero-slide { position: absolute; top: 0; left: 0; width: 100%; }
   /* sombra de elevação na imagem do hero (desktop) — segue o contorno do shape */
   .hero-img-box .hero-slide-img { filter: drop-shadow(0 18px 28px rgba(55, 27, 1, 0.18)) drop-shadow(0 6px 10px rgba(55, 27, 1, 0.10)); }
+  /* ===== HOVER das setas do hero (CSS robusto) ===== */
+  #hero-prev { background: #371b01; }
+  #hero-prev svg path { stroke: #ffb800; }
+  #hero-prev:hover { background: #ffb800; }
+  #hero-prev:hover svg path { stroke: #371b01; }
+  #hero-next { background: #ffb800; }
+  #hero-next svg path { stroke: #371b01; }
+  #hero-next:hover { background: #371b01; }
+  #hero-next:hover svg path { stroke: #ffb800; }
+  #hero-prev, #hero-next, #hero-prev svg path, #hero-next svg path { transition: background .2s ease, stroke .2s ease; }
   /* ===== HERO MOBILE (<768px): imagem em cima -> texto -> botões largura total + contador ===== */
   @media (max-width: 767px) {
     .kicker-full { display: none; }
@@ -523,14 +537,14 @@
     #solucao .hero-col-img { order: -1 !important; width: 100% !important; position: relative !important; }
     /* mobile usa a imagem dedicada (formato domo) como background do box */
     #solucao .hero-img-box {
-      width: calc(100% + 68px) !important;
-      margin-left: -44px !important;
-      margin-right: -24px !important;
+      width: 100% !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
       height: auto !important;
       aspect-ratio: 689 / 696;
       background-image: url('public/images/sections/hero-slide-mobile-1.webp');
-      background-size: 100% 100%;
-      background-position: left top;
+      background-size: contain;
+      background-position: center center;
       background-repeat: no-repeat;
       /* sombra de elevação suave que acompanha o contorno do shape (domo) */
       filter: drop-shadow(0 14px 22px rgba(55, 27, 1, 0.18)) drop-shadow(0 4px 8px rgba(55, 27, 1, 0.10));
@@ -569,8 +583,8 @@
     /* setas menores no mobile, encaixadas sobre a imagem */
     #solucao .hero-arrows > button { width: 44px !important; height: 44px !important; padding: 11px !important; }
     #solucao .hero-arrows > button svg { width: 20px !important; height: 20px !important; }
-    /* contador: alinhado à direita (como desktop), colado na imagem */
-    #solucao .hero-dots { position: static !important; justify-content: flex-end !important; padding: 0 4px 0 0 !important; margin-top: -8px !important; width: 100% !important; }
+    /* contador: alinhado à direita (como desktop), abaixo da imagem */
+    #solucao .hero-dots { position: static !important; justify-content: flex-end !important; padding: 12px 4px 0 0 !important; margin-top: 0 !important; width: 100% !important; }
   }
 </style>
 
@@ -640,7 +654,7 @@
 </script>
 
 <!-- ============ DOBRA 10 - INFRAESTRUTURA ============ -->
-<section class="bg-white relative" style="padding: 80px 107px 64px 107px;">
+<section id="infraestrutura" class="bg-white relative" style="padding: 80px 107px 64px 107px;">
   <!-- Blur amarelo decorativo à esquerda (SVG oficial do Figma, extrapola pra dobra abaixo) -->
   <img src="public/images/sections/blur-amarelo.svg" alt="" aria-hidden="true" class="absolute -z-0 pointer-events-none" style="left: -200px; top: -100px; height: 160%; width: auto; max-width: 70%;" />
 
@@ -666,7 +680,7 @@
     </div>
 
     <!-- 4 cards (h-248 items-end, gap-24) -->
-    <div class="flex w-full" style="gap: 24px; height: 248px;">
+    <div class="infra-cards flex w-full" style="gap: 24px; height: 248px;">
       <!-- Card 01: Liquidação à vista e sem risco (file com $) -->
       <article class="flex flex-col items-start justify-center" style="background: #f8f6f0; border: 2px solid #ffb800; border-radius: 32px; padding: 24px 14px; flex: 1 0 0; max-width: 368px; min-width: 270px; height: 100%;">
         <div class="flex flex-col" style="gap: 8px;">
@@ -709,6 +723,31 @@
     </div>
   </div>
 </section>
+
+<style>
+  /* ===== INFRAESTRUTURA MOBILE (<768px): cabeçalho responsivo + cards empilhados ===== */
+  @media (max-width: 767px) {
+    #infraestrutura { padding-bottom: 48px !important; }
+    #infraestrutura > div { gap: 24px !important; }
+    /* cabeçalho: tipografia mobile */
+    #infraestrutura h2 { font-size: 28px !important; line-height: 34px !important; }
+    /* subtitle: remove o padding lateral gigante do desktop */
+    #infraestrutura div[style*="padding: 16px 174px"] { padding: 16px 0 0 0 !important; }
+    /* cards: empilhados verticalmente, largura total */
+    #infraestrutura .infra-cards {
+      flex-direction: column !important;
+      height: auto !important;
+      gap: 16px !important;
+    }
+    #infraestrutura .infra-cards > article {
+      width: 100% !important;
+      max-width: 100% !important;
+      min-width: 0 !important;
+      height: auto !important;
+      padding: 24px !important;
+    }
+  }
+</style>
 
 <!-- ============ DOBRA 01 - PROBLEMA / GARGALO ============ -->
 <section class="relative" style="background: #f8f6f0; padding: 96px 107px 96px 107px;">
