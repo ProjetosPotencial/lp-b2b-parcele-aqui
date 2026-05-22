@@ -84,7 +84,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Kufam:wght@400;500;700&family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Kufam:wght@400;500;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
@@ -93,7 +93,7 @@
         fontFamily: {
           heading: ['Kufam', 'system-ui', 'sans-serif'],
           sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
-          button: ['Inter', 'system-ui', 'sans-serif'],
+          button: ['"DM Sans"', 'system-ui', 'sans-serif'],
         },
         colors: {
           brand: {
@@ -129,9 +129,9 @@
   .content { font-size: 16px; line-height: 24px; font-weight: 400; }
   .container-fig { max-width: 1152px; margin-left: auto; margin-right: auto; padding-left: 24px; padding-right: 24px; }
   @media (min-width: 1280px) { .container-fig { padding-left: 0; padding-right: 0; } }
-  .btn-primary { display: inline-flex; align-items: center; justify-content: center; background: #ffb800; color: #371b01; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; padding: 16px 24px; border-radius: 8px; transition: 0.2s; cursor: pointer; }
+  .btn-primary { display: inline-flex; align-items: center; justify-content: center; background: #ffb800; color: #371b01; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; padding: 16px 24px; border-radius: 8px; transition: 0.2s; cursor: pointer; }
   .btn-primary:hover { background: #371b01; color: #ffb800; }
-  .btn-secondary { display: inline-flex; align-items: center; justify-content: center; background: transparent; color: #371B01; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; padding: 16px 24px; border-radius: 8px; border: 2px solid #371B01; transition: 0.2s; cursor: pointer; }
+  .btn-secondary { display: inline-flex; align-items: center; justify-content: center; background: transparent; color: #371B01; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; padding: 16px 24px; border-radius: 8px; border: 2px solid #371B01; transition: 0.2s; cursor: pointer; }
   /* Hover unificado pra todos os botões amarelos: bg vira marrom, texto vira amarelo */
   .btn-yellow-hover { transition: background-color 0.2s, color 0.2s; }
   .btn-yellow-hover:hover { background-color: #371b01 !important; color: #ffb800 !important; }
@@ -144,9 +144,109 @@
   .plus { transition: transform 0.2s; }
   .preview-banner { position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); z-index: 100; background: #111111; color: #ffb800; padding: 8px 16px; border-radius: 999px; font-size: 12px; font-weight: 600; box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
   /* Nav link: underline amarelo 8px só em hover/active/focus */
-  .nav-link { position: relative; padding-bottom: 14px; transition: color 0.2s; }
-  .nav-link::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: #ffb800; opacity: 0; border-radius: 2px 2px 0 0; transition: opacity 0.2s; }
+  .nav-link { position: relative; padding-top: 14px; padding-bottom: 14px; transition: color 0.2s; }
+  .nav-link::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 6px; background: #ffb800; opacity: 0; border-radius: 2px 2px 0 0; transition: opacity 0.2s; }
   .nav-link:hover::after, .nav-link:focus::after, .nav-link:active::after { opacity: 1; }
+
+  /* ============================================================
+     BASE MOBILE GLOBAL (<768px) — desbaste prévio antes do refino dobra a dobra.
+     Objetivo: nada estoura a viewport de 412px; tudo legível e contido.
+     As dobras com mobile dedicado (Como Funciona, FAQ, Footer) têm suas
+     próprias media queries que prevalecem e não são afetadas aqui.
+     ============================================================ */
+  @media (max-width: 767px) {
+    /* mata scroll horizontal de qualquer elemento que vaze */
+    html, body { overflow-x: hidden; max-width: 100%; }
+
+    /* header mobile (Figma node 6027:13257): pad lateral 32, vertical 16, altura auto */
+    #header .container-fig { height: auto !important; padding-top: 16px !important; padding-bottom: 16px !important; padding-left: 32px !important; padding-right: 32px !important; }
+
+    /* padding lateral das sections: 107px -> 24px */
+    section, footer { padding-left: 24px !important; padding-right: 24px !important; }
+
+    /* containers fixos viram fluidos */
+    section [style*="max-width: 1153px"],
+    section [style*="max-width: 1152px"] { max-width: 100% !important; }
+
+    /* larguras fixas grandes (colunas, imagens, cards) -> fluidas */
+    section [style*="width: 466px"],
+    section [style*="width: 563px"],
+    section [style*="width: 600px"],
+    section [style*="width: 660px"],
+    section [style*="width: 368px"],
+    section [style*="width: 369px"],
+    section [style*="width: 366px"],
+    section [style*="width: 362px"],
+    section [style*="width: 328px"],
+    section [style*="width: 310px"],
+    section [style*="width: 270px"] { width: 100% !important; max-width: 100% !important; }
+
+    /* imagens nunca estouram */
+    section img { max-width: 100%; height: auto; }
+
+    /* containers flex em linha -> empilham no mobile (exceto onde há mobile dedicado) */
+    section > div[class*="flex"]:not(.faq-mobile):not(.cf-mobile),
+    section .flex[style*="gap"]:not(.footer-bottom) { }
+
+    /* elementos posicionados de forma absoluta que sangram (iMac, shapes decorativos): conter */
+    section .absolute[style*="right: -"],
+    section [style*="right: -72px"] { display: none !important; }
+
+    /* botões de largura fixa 369px -> 100% */
+    a[style*="width: 369px"] { width: 100% !important; max-width: 360px; }
+
+    /* containers de 2 colunas (gap grande) empilham verticalmente no mobile */
+    section [style*="gap: 124px"],
+    section [style*="gap: 120px"],
+    section [style*="gap: 96px"],
+    section [style*="gap: 72px"],
+    section [style*="gap: 64px"] {
+      flex-direction: column !important;
+      gap: 32px !important;
+      align-items: stretch !important;
+    }
+    /* dentro desses, colunas flex-shrink-0 deixam de encolher e ocupam 100% */
+    section [style*="gap: 124px"] > div,
+    section [style*="gap: 120px"] > div,
+    section [style*="gap: 96px"] > div,
+    section [style*="gap: 72px"] > div,
+    section [style*="gap: 64px"] > div { width: 100% !important; max-width: 100% !important; flex-shrink: 1 !important; }
+
+    /* textos com width fixo que quebravam palavra-a-palavra */
+    section p[style*="width: 362px"],
+    section p[style*="width: 366px"],
+    section [style*="width: 328px"],
+    section [style*="width: 600px"] { width: 100% !important; max-width: 100% !important; }
+
+    /* paddings laterais internos enormes (subtitles centralizados) -> 0 no mobile */
+    section [style*="padding: 16px 174px"],
+    section [style*="padding: 16px 196px"],
+    section [style*="padding: 16px 174px 0 174px"],
+    section [style*="padding: 24px 96px"],
+    section [style*="padding: 0 196px"],
+    section [style*="padding: 0 174px"] { padding-left: 0 !important; padding-right: 0 !important; }
+
+    /* grids/flex de cards (4 ou 2 colunas) -> 1 coluna empilhada no mobile */
+    section [style*="grid-template-columns: repeat(4"],
+    section [style*="grid-template-columns: repeat(2"] { grid-template-columns: 1fr !important; }
+    /* flex de cards com altura fixa -> coluna, altura auto */
+    section .flex[style*="height: 248px"],
+    section .flex[style*="height: 160px"] { flex-direction: column !important; height: auto !important; gap: 16px !important; }
+    /* cards individuais -> largura cheia, altura auto */
+    section article[style*="max-width: 368px"],
+    section article[style*="min-width: 270px"] { max-width: 100% !important; min-width: 0 !important; width: 100% !important; height: auto !important; }
+
+    /* ============================================================
+       REGRA GLOBAL: em TODAS as dobras de 2 colunas, a IMAGEM vem
+       ANTES do conteúdo no mobile. A coluna que contém <img> recebe
+       order:-1 e sobe pro topo, independente da ordem no HTML.
+       ============================================================ */
+    section [style*="gap: 124px"] > div:has(img),
+    section [style*="gap: 120px"] > div:has(img),
+    section [style*="gap: 96px"] > div:has(img),
+    section [style*="gap: 72px"] > div:has(img),
+    section [style*="gap: 64px"] > div:has(img) { order: -1 !important; }
+  }
 </style>
 </head>
 <body class="bg-white">
@@ -165,8 +265,12 @@
     <div class="flex items-center gap-5">
       <a href="#cta" class="btn-primary hidden sm:inline-flex" style="padding: 12px 20px; font-size: 14px;">Quero simular parcelamento</a>
       <a href="#" class="hidden sm:inline-flex text-sm font-bold text-brand-black hover:underline">Entrar</a>
-      <button id="mobileToggle" class="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-full border border-brand-black/10" aria-label="Menu">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <button id="mobileToggle" class="lg:hidden inline-flex items-center justify-center" style="padding: 16px; color: #371b01;" aria-label="Menu">
+        <svg width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 8H40" stroke="#371B01" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M8 24H40" stroke="#371B01" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M8 40H40" stroke="#371B01" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </button>
     </div>
   </div>
@@ -215,8 +319,8 @@
             </li>
           </ul>
           <div class="flex flex-col" style="gap: 16px;">
-            <a href="#como-funciona" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Ver como funciona no meu negócio</a>
-            <a href="#cta" class="inline-flex items-center justify-center rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; border: 1px solid #371b01; background: transparent;" onmouseover="this.style.background='#371b01'; this.style.color='#ffffff';" onmouseout="this.style.background='transparent'; this.style.color='#371b01';">Falar com um especialista</a>
+            <a href="#como-funciona" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Ver como funciona no meu negócio</a>
+            <a href="#cta" class="inline-flex items-center justify-center rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; border: 1px solid #371b01; background: transparent;" onmouseover="this.style.background='#371b01'; this.style.color='#ffffff';" onmouseout="this.style.background='transparent'; this.style.color='#371b01';">Falar com um especialista</a>
           </div>
         </div>
 
@@ -244,8 +348,8 @@
             </li>
           </ul>
           <div class="flex flex-col" style="gap: 16px;">
-            <a href="#como-funciona" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Quero vender mais</a>
-            <a href="#cta" class="inline-flex items-center justify-center rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; border: 1px solid #371b01; background: transparent;" onmouseover="this.style.background='#371b01'; this.style.color='#ffffff';" onmouseout="this.style.background='transparent'; this.style.color='#371b01';">Falar com um especialista</a>
+            <a href="#como-funciona" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Quero vender mais</a>
+            <a href="#cta" class="inline-flex items-center justify-center rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; border: 1px solid #371b01; background: transparent;" onmouseover="this.style.background='#371b01'; this.style.color='#ffffff';" onmouseout="this.style.background='transparent'; this.style.color='#371b01';">Falar com um especialista</a>
           </div>
         </div>
 
@@ -273,8 +377,8 @@
             </li>
           </ul>
           <div class="flex flex-col" style="gap: 16px;">
-            <a href="#como-funciona" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Acelerar minhas vendas</a>
-            <a href="#cta" class="inline-flex items-center justify-center rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; border: 1px solid #371b01; background: transparent;" onmouseover="this.style.background='#371b01'; this.style.color='#ffffff';" onmouseout="this.style.background='transparent'; this.style.color='#371b01';">Falar com um especialista</a>
+            <a href="#como-funciona" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Acelerar minhas vendas</a>
+            <a href="#cta" class="inline-flex items-center justify-center rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; border: 1px solid #371b01; background: transparent;" onmouseover="this.style.background='#371b01'; this.style.color='#ffffff';" onmouseout="this.style.background='transparent'; this.style.color='#371b01';">Falar com um especialista</a>
           </div>
         </div>
 
@@ -302,8 +406,8 @@
             </li>
           </ul>
           <div class="flex flex-col" style="gap: 16px;">
-            <a href="#como-funciona" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Quero ativar agora</a>
-            <a href="#cta" class="inline-flex items-center justify-center rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; border: 1px solid #371b01; background: transparent;" onmouseover="this.style.background='#371b01'; this.style.color='#ffffff';" onmouseout="this.style.background='transparent'; this.style.color='#371b01';">Falar com um especialista</a>
+            <a href="#como-funciona" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Quero ativar agora</a>
+            <a href="#cta" class="inline-flex items-center justify-center rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; border: 1px solid #371b01; background: transparent;" onmouseover="this.style.background='#371b01'; this.style.color='#ffffff';" onmouseout="this.style.background='transparent'; this.style.color='#371b01';">Falar com um especialista</a>
           </div>
         </div>
 
@@ -331,8 +435,8 @@
             </li>
           </ul>
           <div class="flex flex-col" style="gap: 16px;">
-            <a href="#como-funciona" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Conhecer a infraestrutura</a>
-            <a href="#cta" class="inline-flex items-center justify-center rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; border: 1px solid #371b01; background: transparent;" onmouseover="this.style.background='#371b01'; this.style.color='#ffffff';" onmouseout="this.style.background='transparent'; this.style.color='#371b01';">Falar com um especialista</a>
+            <a href="#como-funciona" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Conhecer a infraestrutura</a>
+            <a href="#cta" class="inline-flex items-center justify-center rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; border: 1px solid #371b01; background: transparent;" onmouseover="this.style.background='#371b01'; this.style.color='#ffffff';" onmouseout="this.style.background='transparent'; this.style.color='#371b01';">Falar com um especialista</a>
           </div>
         </div>
 
@@ -566,7 +670,7 @@
 
       <!-- CTA (pt-14, font 18 Inter Bold, triple shadow) -->
       <div style="padding-top: 14px;">
-        <a href="#cta" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="padding: 16px 24px; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Entender se faz sentido para minha empresa</a>
+        <a href="#cta" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Entender se faz sentido para minha empresa</a>
       </div>
     </div>
   </div>
@@ -623,7 +727,7 @@
 
       <!-- CTA (pt-14, w-369px FIXO, Inter Bold 18, triple shadow) -->
       <div style="padding-top: 14px;">
-        <a href="https://wa.me/55XXXXXXXXXXX?text=Ol%C3%A1!%20Vim%20da%20Landing%20Page%20Parcele%20Aqui%20Neg%C3%B3cios%20e%20quero%20simular%20uma%20opera%C3%A7%C3%A3o%20para%20o%20meu%20neg%C3%B3cio.%20Pode%20me%20ajudar%3F" target="_blank" rel="noopener" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Simular uma operação</a>
+        <a href="https://wa.me/55XXXXXXXXXXX?text=Ol%C3%A1!%20Vim%20da%20Landing%20Page%20Parcele%20Aqui%20Neg%C3%B3cios%20e%20quero%20simular%20uma%20opera%C3%A7%C3%A3o%20para%20o%20meu%20neg%C3%B3cio.%20Pode%20me%20ajudar%3F" target="_blank" rel="noopener" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Simular uma operação</a>
       </div>
     </div>
 
@@ -651,7 +755,7 @@
 
       <!-- Texto sobreposto (Figma: bloco top 345 na imagem, pl-32, gap kicker->título 8px, base título→card 24px) -->
       <div class="absolute" style="top: 345px; left: 0; padding-left: 32px; width: 1153px; display: flex; flex-direction: column; gap: 8px;">
-        <p style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 16px; line-height: 24px; color: #f8f6f0;">Como funciona na prática</p>
+        <p style="font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 16px; line-height: 24px; color: #f8f6f0;">Como funciona na prática</p>
         <h2 style="font-family: 'Kufam', sans-serif; font-size: 40px; line-height: 48px; letter-spacing: 0.2px; color: #f8f6f0; font-weight: 400; width: 653px;">
           <span style="font-weight: 400;">Simples, rápido </span><span style="font-weight: 700;">e 100% digital.</span>
         </h2>
@@ -724,7 +828,7 @@
 
           <!-- Texto sobreposto (Figma: top 285 na imagem de 580 = ~49%, pad-left 32, gap 8) -->
           <div style="position: absolute; top: 49.1%; left: 0; padding: 0 32px; width: 100%; display: flex; flex-direction: column; gap: 8px;">
-            <p style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 16px; line-height: 24px; color: #f8f6f0;">Como funciona na prática</p>
+            <p style="font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 16px; line-height: 24px; color: #f8f6f0;">Como funciona na prática</p>
             <h2 style="font-family: 'Kufam', sans-serif; font-size: 40px; line-height: 48px; letter-spacing: 0.2px; color: #f8f6f0; font-weight: 400; margin: 0;">
               <span style="font-weight: 400;">Simples, rápido </span><span style="font-weight: 700;">e 100% digital.</span>
             </h2>
@@ -884,7 +988,7 @@
 
     <!-- CTA único centralizado (Inter Bold 18px, w-369, triple shadow) -->
     <div class="flex items-center justify-center w-full" style="gap: 24px;">
-      <a href="#cta" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Ver exemplos de uso</a>
+      <a href="#cta" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Ver exemplos de uso</a>
     </div>
 
   </div>
@@ -1191,7 +1295,7 @@
         <!-- Pergunta 1 (aberta por padrão) -->
         <details open class="group bg-brand-yellow overflow-hidden" style="border-radius: 16px;">
           <summary class="flex items-start cursor-pointer list-none" style="gap: 16px; padding: 12px 24px;">
-            <span class="flex-1" style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">Quem assume o risco da operação?</span>
+            <span class="flex-1" style="font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">Quem assume o risco da operação?</span>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#371b01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 transition-transform group-open:rotate-180">
               <polyline points="6 9 12 15 18 9"/>
             </svg>
@@ -1204,7 +1308,7 @@
         <!-- Pergunta 2 (fechada) -->
         <details class="group bg-brand-yellow overflow-hidden" style="border-radius: 16px;">
           <summary class="flex items-start cursor-pointer list-none" style="gap: 16px; padding: 12px 24px;">
-            <span class="flex-1" style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">É seguro oferecer parcelamento para meus clientes?</span>
+            <span class="flex-1" style="font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">É seguro oferecer parcelamento para meus clientes?</span>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#371b01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 transition-transform group-open:rotate-180">
               <polyline points="6 9 12 15 18 9"/>
             </svg>
@@ -1217,7 +1321,7 @@
         <!-- Pergunta 3 (fechada) -->
         <details class="group bg-brand-yellow overflow-hidden" style="border-radius: 16px;">
           <summary class="flex items-start cursor-pointer list-none" style="gap: 16px; padding: 12px 24px;">
-            <span class="flex-1" style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">Em quanto tempo o valor é liquidado?</span>
+            <span class="flex-1" style="font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">Em quanto tempo o valor é liquidado?</span>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#371b01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 transition-transform group-open:rotate-180">
               <polyline points="6 9 12 15 18 9"/>
             </svg>
@@ -1230,7 +1334,7 @@
         <!-- Pergunta 4 (fechada) -->
         <details class="group bg-brand-yellow overflow-hidden" style="border-radius: 16px;">
           <summary class="flex items-start cursor-pointer list-none" style="gap: 16px; padding: 12px 24px;">
-            <span class="flex-1" style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">Quais pagamentos podem ser parcelados?</span>
+            <span class="flex-1" style="font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">Quais pagamentos podem ser parcelados?</span>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#371b01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 transition-transform group-open:rotate-180">
               <polyline points="6 9 12 15 18 9"/>
             </svg>
@@ -1243,7 +1347,7 @@
         <!-- Pergunta 5 (fechada) -->
         <details class="group bg-brand-yellow overflow-hidden" style="border-radius: 16px;">
           <summary class="flex items-start cursor-pointer list-none" style="gap: 16px; padding: 12px 24px;">
-            <span class="flex-1" style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">Existe risco de inadimplência para o escritório?</span>
+            <span class="flex-1" style="font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">Existe risco de inadimplência para o escritório?</span>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#371b01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 transition-transform group-open:rotate-180">
               <polyline points="6 9 12 15 18 9"/>
             </svg>
@@ -1256,7 +1360,7 @@
         <!-- Pergunta 6 (fechada) -->
         <details class="group bg-brand-yellow overflow-hidden" style="border-radius: 16px;">
           <summary class="flex items-start cursor-pointer list-none" style="gap: 16px; padding: 12px 24px;">
-            <span class="flex-1" style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">O cliente pode usar mais de um cartão?</span>
+            <span class="flex-1" style="font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">O cliente pode usar mais de um cartão?</span>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#371b01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 transition-transform group-open:rotate-180">
               <polyline points="6 9 12 15 18 9"/>
             </svg>
@@ -1301,7 +1405,7 @@
       <div class="flex flex-col" style="gap: 12px; margin-top: 24px;">
         <details open class="group bg-brand-yellow overflow-hidden" style="border-radius: 16px;">
           <summary class="flex items-start cursor-pointer list-none" style="gap: 16px; padding: 12px 24px;">
-            <span class="flex-1" style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">Quem assume o risco da operação?</span>
+            <span class="flex-1" style="font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">Quem assume o risco da operação?</span>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#371b01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 transition-transform group-open:rotate-180"><polyline points="6 9 12 15 18 9"/></svg>
           </summary>
           <div class="bg-white border-t border-brand-yellow" style="padding: 16px 24px 24px 24px;">
@@ -1310,7 +1414,7 @@
         </details>
         <details class="group bg-brand-yellow overflow-hidden" style="border-radius: 16px;">
           <summary class="flex items-start cursor-pointer list-none" style="gap: 16px; padding: 12px 24px;">
-            <span class="flex-1" style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">É seguro oferecer parcelamento para meus clientes?</span>
+            <span class="flex-1" style="font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">É seguro oferecer parcelamento para meus clientes?</span>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#371b01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 transition-transform group-open:rotate-180"><polyline points="6 9 12 15 18 9"/></svg>
           </summary>
           <div class="bg-white border-t border-brand-yellow" style="padding: 16px 24px 24px 24px;">
@@ -1319,7 +1423,7 @@
         </details>
         <details class="group bg-brand-yellow overflow-hidden" style="border-radius: 16px;">
           <summary class="flex items-start cursor-pointer list-none" style="gap: 16px; padding: 12px 24px;">
-            <span class="flex-1" style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">Em quanto tempo o valor é liquidado?</span>
+            <span class="flex-1" style="font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">Em quanto tempo o valor é liquidado?</span>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#371b01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 transition-transform group-open:rotate-180"><polyline points="6 9 12 15 18 9"/></svg>
           </summary>
           <div class="bg-white border-t border-brand-yellow" style="padding: 16px 24px 24px 24px;">
@@ -1328,7 +1432,7 @@
         </details>
         <details class="group bg-brand-yellow overflow-hidden" style="border-radius: 16px;">
           <summary class="flex items-start cursor-pointer list-none" style="gap: 16px; padding: 12px 24px;">
-            <span class="flex-1" style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">Quais pagamentos podem ser parcelados?</span>
+            <span class="flex-1" style="font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">Quais pagamentos podem ser parcelados?</span>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#371b01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 transition-transform group-open:rotate-180"><polyline points="6 9 12 15 18 9"/></svg>
           </summary>
           <div class="bg-white border-t border-brand-yellow" style="padding: 16px 24px 24px 24px;">
@@ -1337,7 +1441,7 @@
         </details>
         <details class="group bg-brand-yellow overflow-hidden" style="border-radius: 16px;">
           <summary class="flex items-start cursor-pointer list-none" style="gap: 16px; padding: 12px 24px;">
-            <span class="flex-1" style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">Existe risco de inadimplência para o escritório?</span>
+            <span class="flex-1" style="font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">Existe risco de inadimplência para o escritório?</span>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#371b01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 transition-transform group-open:rotate-180"><polyline points="6 9 12 15 18 9"/></svg>
           </summary>
           <div class="bg-white border-t border-brand-yellow" style="padding: 16px 24px 24px 24px;">
@@ -1346,7 +1450,7 @@
         </details>
         <details class="group bg-brand-yellow overflow-hidden" style="border-radius: 16px;">
           <summary class="flex items-start cursor-pointer list-none" style="gap: 16px; padding: 12px 24px;">
-            <span class="flex-1" style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">O cliente pode usar mais de um cartão?</span>
+            <span class="flex-1" style="font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">O cliente pode usar mais de um cartão?</span>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#371b01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 transition-transform group-open:rotate-180"><polyline points="6 9 12 15 18 9"/></svg>
           </summary>
           <div class="bg-white border-t border-brand-yellow" style="padding: 16px 24px 24px 24px;">
@@ -1419,7 +1523,7 @@
 
         <!-- CTA (Inter Bold 18px, w-369, triple shadow, pt-14) -->
         <div style="padding-top: 14px;">
-          <a href="#como-funciona" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Ver como funciona no meu negócio</a>
+          <a href="#como-funciona" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Ver como funciona no meu negócio</a>
         </div>
 
       </div>
