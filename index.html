@@ -642,34 +642,34 @@
     <!-- Shape amarelo de fundo (Figma: 1183×464, rounded-32, deslocado pra baixo-direita criando moldura à direita e na base da foto) -->
     <div class="absolute pointer-events-none" style="background: #ffb800; width: 1183px; height: 464px; border-radius: 32px; left: 30px; top: 157px; z-index: 0;" aria-hidden="true"></div>
 
-    <!-- Container imagem (webp com foto + vinheta embutida, cantos arredondados do Figma) -->
-    <div class="relative" style="width: 1153px; z-index: 1;">
-      <!-- Foto base (webp RGBA com vinheta já embutida) -->
-      <img src="public/images/sections/secao-como-funciona.webp" alt="Profissional sorridente em ambiente moderno" class="block" style="width: 100%; height: auto;" />
+    <!-- Container imagem (webp com foto + vinheta + cantos arredondados embutidos). Figma: 1153×521 -->
+    <div class="relative" style="width: 1153px; height: 521px; z-index: 1;">
+      <!-- Foto base (webp RGBA, cantos tl-32 tr-240 bl-32 br-32 já recortados) -->
+      <img src="public/images/sections/secao-como-funciona.webp" alt="Profissional sorridente em ambiente moderno" class="block" style="width: 1153px; height: 521px; object-fit: cover;" />
 
-      <!-- Texto sobreposto (bottom-left, pl-32) -->
-      <div class="absolute" style="bottom: 200px; left: 0; padding-left: 32px; width: 1153px; display: flex; flex-direction: column; gap: 8px;">
+      <!-- Texto sobreposto (Figma: top 345, pl-32, gap 8) -->
+      <div class="absolute" style="top: 345px; left: 0; padding-left: 32px; width: 1153px; display: flex; flex-direction: column; gap: 8px;">
         <p style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 16px; line-height: 24px; color: #f8f6f0;">Como funciona na prática</p>
-        <h2 style="font-family: 'Kufam', sans-serif; font-size: 40px; line-height: 48px; letter-spacing: 0.2px; color: #f8f6f0; font-weight: 400; width: 653px;">
+        <h2 style="font-family: 'Kufam', sans-serif; font-size: 40px; line-height: 48px; letter-spacing: 0.2px; color: #f8f6f0; font-weight: 400; width: 653px; margin: 0;">
           <span style="font-weight: 400;">Simples, rápido </span><span style="font-weight: 700;">e 100% digital.</span>
         </h2>
       </div>
 
-      <!-- Card 4 passos sobreposto (na parte inferior da imagem) -->
-      <div class="absolute" style="bottom: -80px; left: 0; width: 1153px; padding: 0 32px; z-index: 2;">
-        <div class="flex items-center" style="background: #f8f6f0; border-radius: 16px; width: 1092px; height: 160px;">
-          <!-- Passo 01 -->
+      <!-- Card 4 passos (Figma: top 449, width 1092, height 160, radius 16, centrado, px-32) -->
+      <div class="absolute flex items-end justify-center" style="top: 449px; left: 0; width: 1153px; padding: 0 32px; z-index: 2;">
+        <div class="flex items-center justify-center" style="background: #f8f6f0; border-radius: 16px; width: 1092px; height: 160px;">
+          <!-- Passo 01 (width 263, pl-32 pr-16) -->
           <div class="flex flex-col justify-center" style="gap: 8px; padding: 32px 16px 32px 32px; width: 263px; height: 100%; border-radius: 16px 0 0 16px;">
             <p style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 24px; line-height: 40px; color: #371b01;">01.</p>
             <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; letter-spacing: -0.32px; color: #111;">Sua empresa emite o boleto normalmente</p>
           </div>
 
-          <!-- Separador 1 -->
+          <!-- Separador 1 (barra 2px × 100px, #e6ac00) -->
           <div class="flex items-center justify-center" style="width: 4px; height: 100%;">
             <div style="width: 2px; height: 100px; background: #e6ac00; border-radius: 16px;"></div>
           </div>
 
-          <!-- Passo 02 -->
+          <!-- Passo 02 (width 271.5, px-16) -->
           <div class="flex flex-col justify-center" style="gap: 8px; padding: 32px 16px; width: 271.5px; height: 100%;">
             <p style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 24px; line-height: 40px; color: #371b01;">02.</p>
             <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #111;">O cliente escolhe parcelar com o Parcele Aqui</p>
@@ -680,7 +680,7 @@
             <div style="width: 2px; height: 100px; background: #e6ac00; border-radius: 16px;"></div>
           </div>
 
-          <!-- Passo 03 -->
+          <!-- Passo 03 (width 271.5, px-16) -->
           <div class="flex flex-col justify-center" style="gap: 8px; padding: 32px 16px; width: 271.5px; height: 100%;">
             <p style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 24px; line-height: 40px; color: #371b01;">03.</p>
             <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; letter-spacing: -0.32px; color: #111;">O cliente escolhe as parcelas<br/>e paga no cartão</p>
@@ -691,7 +691,7 @@
             <div style="width: 2px; height: 100px; background: #e6ac00; border-radius: 16px;"></div>
           </div>
 
-          <!-- Passo 04 -->
+          <!-- Passo 04 (width 271.5, pl-16 pr-32) -->
           <div class="flex flex-col justify-center" style="gap: 8px; padding: 32px 32px 32px 16px; width: 271.5px; height: 100%; border-radius: 0 16px 16px 0;">
             <p style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 24px; line-height: 40px; color: #371b01;">04.</p>
             <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; letter-spacing: -0.32px; color: #111;">Boleto liquidado à vista para sua empresa</p>
@@ -700,8 +700,8 @@
       </div>
     </div>
 
-    <!-- Espaçador pra acomodar o card sobreposto que vaza pra baixo -->
-    <div style="height: 120px;"></div>
+    <!-- Espaçador pra acomodar o card que vaza abaixo da imagem (card top 449 + 160 = 609, imagem 521 → vaza 88px) -->
+    <div style="height: 100px;"></div>
   </div>
 </section>
 
