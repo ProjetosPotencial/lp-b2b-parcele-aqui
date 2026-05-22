@@ -1428,11 +1428,11 @@
 </section>
 
 <!-- ============ FOOTER ============ -->
-<footer class="bg-brand-beige-light relative" style="padding: 0 107px 80px 107px;">
+<footer id="site-footer" class="bg-brand-beige-light relative" style="padding: 0 107px 80px 107px;">
   <div class="flex flex-col w-full" style="gap: 8px; max-width: 1153px; margin: 0 auto;">
 
     <!-- ROW 1: 4 colunas (Logo+links | Links | Outros | Contato) -->
-    <div class="flex w-full" style="gap: 24px; padding: 48px 0 32px 0; align-items: flex-start;">
+    <div class="footer-cols flex w-full" style="gap: 24px; padding: 48px 0 32px 0; align-items: flex-start;">
 
       <!-- COLUNA 1: Logo Parcele Aqui + 2 links institucionais -->
       <div class="flex flex-col" style="flex: 1 0 0; min-width: 0; gap: 48px;">
@@ -1509,8 +1509,8 @@
     <div class="w-full" style="height: 1px; background: #371b01; opacity: 0.15; margin-top: 8px;" aria-hidden="true"></div>
 
     <!-- ROW 3: Copyright + ícones redes sociais -->
-    <div class="flex items-center justify-between w-full" style="padding-top: 8px;">
-      <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 12px; line-height: 28px; color: #111; text-transform: uppercase;">© PARCELE AQUI - POTENCIAL TECNOLOGIA · CNPJ: 21.301.803/0001-56</p>
+    <div class="footer-bottom flex items-center justify-between w-full" style="padding-top: 8px;">
+      <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 12px; line-height: 28px; color: #111; text-transform: uppercase;">© PARCELE AQUI - POTENCIAL TECNOLOGIA ·<br class="cnpj-break"/> CNPJ: 21.301.803/0001-56</p>
 
       <div class="flex items-start">
         <!-- LinkedIn (p-10, ícone 24×24, cor #111) -->
@@ -1525,6 +1525,28 @@
     </div>
   </div>
 </footer>
+
+<style>
+  /* Footer responsivo: empilha colunas no mobile (Figma node 4010:14566, pad 36) */
+  @media (max-width: 767px) {
+    #site-footer { padding-left: 36px !important; padding-right: 36px !important; padding-bottom: 48px !important; }
+    /* espaçamento de 56px entre os blocos empilhados (logo / Links / Outros / Contato) */
+    #site-footer .footer-cols { flex-direction: column !important; gap: 56px !important; }
+    #site-footer .footer-cols > div { width: 100% !important; flex: none !important; padding-top: 0 !important; gap: 16px !important; }
+    /* col 1: logo -20% (270x54 -> 216x43) e espaçamento de 32px do logo para 'Quem somos' */
+    #site-footer .footer-cols > div:first-child { gap: 32px !important; }
+    #site-footer .footer-cols > div:first-child > div:first-child { height: auto !important; }
+    #site-footer .footer-cols > div:first-child img { width: 216px !important; height: 43px !important; }
+    /* títulos das seções (Links / Outros / Contato) em 20px no mobile */
+    #site-footer .footer-cols p[style*="font-size: 20px"] { font-size: 20px !important; }
+    /* row copyright: empilha CNPJ acima dos ícones */
+    #site-footer .footer-bottom { flex-direction: column !important; align-items: flex-start !important; gap: 16px !important; }
+    /* quebra do copyright (CNPJ na linha de baixo) só no mobile */
+    #site-footer .cnpj-break { display: inline !important; }
+  }
+  /* desktop: copyright em uma linha só */
+  #site-footer .cnpj-break { display: none; }
+</style>
 
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
