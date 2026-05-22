@@ -409,17 +409,18 @@
 
 <!-- ============ DOBRA HERO ============ -->
 <section id="solucao" class="bg-white relative" style="padding: 32px 107px 32px 107px;">
-  <div class="flex items-start justify-center w-full" style="max-width: 1153px; margin: 0 auto;">
+  <div class="hero-wrap flex items-start justify-center w-full" style="max-width: 1153px; margin: 0 auto;">
 
-    <!-- HERO SLIDER (5 slides) -->
-    <div id="hero-slider" class="flex items-start w-full" style="padding-top: 0;" data-current="0" data-total="5">
+    <!-- HERO SLIDER (3 slides) -->
+    <div id="hero-slider" class="flex items-start w-full" style="padding-top: 0;" data-current="0" data-total="3">
 
-      <!-- ===== COLUNA ESQUERDA: Texto (5 variações, só 1 visível por vez) ===== -->
-      <div class="flex-1 flex flex-col relative" style="padding-top: 56px; gap: 8px; max-width: 600px; min-height: 540px;">
+      <!-- ===== COLUNA ESQUERDA: Texto (3 variações) + botões FIXOS ===== -->
+      <div class="hero-col-text flex-1 flex flex-col relative" style="padding-top: 56px; gap: 8px; max-width: 600px; min-height: 540px;">
 
-        <!-- SLIDE 1 (ativo) -->
+        <!-- área dos slides com altura fixa para os botões não se moverem -->
+        <div class="hero-slides-area" style="position: relative; min-height: 430px;">
         <div class="hero-slide" data-slide="0" style="display: flex; flex-direction: column; gap: 8px;">
-          <p style="font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 16px; line-height: 24px; color: #2e2e2e;">Parcelamento B2B sem risco para sua empresa</p>
+          <p class="hero-kicker" style="font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 16px; line-height: 24px; color: #2e2e2e;"><span class="kicker-full">Parcelamento B2B sem risco para sua empresa</span><span class="kicker-short">Parcelamento B2B sem risco</span></p>
           <h1 style="font-family: 'Kufam', sans-serif; font-size: 40px; line-height: 48px; letter-spacing: 0.2px; color: #371b01; font-weight: 400; margin-top: 0;">
             <span style="font-weight: 700;">Destrave negociações B2B com parcelamento </span><span style="font-weight: 400;">no cartão e receba à vista, sem inadimplência</span>
           </h1>
@@ -427,28 +428,15 @@
             Seus clientes parcelam em até 12x.<br/>Sua empresa recebe à vista e sem risco.
           </p>
           <ul class="flex flex-col" style="padding: 16px 0; gap: 16px;">
-            <li class="flex items-start" style="gap: 8px;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="flex-shrink-0"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ffb800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Sua empresa recebe à vista</span>
-            </li>
-            <li class="flex items-start" style="gap: 8px;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="flex-shrink-0"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ffb800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Zero risco de inadimplência</span>
-            </li>
-            <li class="flex items-start" style="gap: 8px;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="flex-shrink-0"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ffb800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Ativação rápida e 100% digital</span>
-            </li>
+            <li class="flex items-start" style="gap: 8px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="flex-shrink-0"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ffb800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Sua empresa recebe à vista</span></li>
+            <li class="flex items-start" style="gap: 8px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="flex-shrink-0"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ffb800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Zero risco de inadimplência</span></li>
+            <li class="flex items-start" style="gap: 8px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="flex-shrink-0"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ffb800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Ativação rápida e 100% digital</span></li>
           </ul>
-          <div class="flex flex-col" style="gap: 16px;">
-            <a href="#como-funciona" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Ver como funciona no meu negócio</a>
-            <a href="#cta" class="inline-flex items-center justify-center rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; border: 1px solid #371b01; background: transparent;" onmouseover="this.style.background='#371b01'; this.style.color='#ffffff';" onmouseout="this.style.background='transparent'; this.style.color='#371b01';">Falar com um especialista</a>
-          </div>
         </div>
 
-        <!-- SLIDE 2 (oculto) -->
+        <!-- SLIDE 2 -->
         <div class="hero-slide" data-slide="1" style="display: none; flex-direction: column; gap: 8px;">
-          <p style="font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 16px; line-height: 24px; color: #2e2e2e;">Aumente seu ticket médio</p>
+          <p class="hero-kicker" data-kicker-full="Aumente seu ticket médio" data-kicker-short="Aumente seu ticket médio" style="font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 16px; line-height: 24px; color: #2e2e2e;">Aumente seu ticket médio</p>
           <h1 style="font-family: 'Kufam', sans-serif; font-size: 40px; line-height: 48px; letter-spacing: 0.2px; color: #371b01; font-weight: 400; margin-top: 0;">
             <span style="font-weight: 700;">Venda contratos maiores </span><span style="font-weight: 400;">sem travar o caixa da sua empresa</span>
           </h1>
@@ -456,28 +444,15 @@
             Clientes aprovam propostas mais altas.<br/>Você recebe integralmente, à vista.
           </p>
           <ul class="flex flex-col" style="padding: 16px 0; gap: 16px;">
-            <li class="flex items-start" style="gap: 8px;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="flex-shrink-0"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ffb800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Ticket médio até 3x maior</span>
-            </li>
-            <li class="flex items-start" style="gap: 8px;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="flex-shrink-0"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ffb800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Mais conversão em propostas grandes</span>
-            </li>
-            <li class="flex items-start" style="gap: 8px;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="flex-shrink-0"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ffb800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Sem expor a empresa ao crédito</span>
-            </li>
+            <li class="flex items-start" style="gap: 8px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="flex-shrink-0"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ffb800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Ticket médio até 3x maior</span></li>
+            <li class="flex items-start" style="gap: 8px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="flex-shrink-0"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ffb800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Mais conversão em propostas grandes</span></li>
+            <li class="flex items-start" style="gap: 8px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="flex-shrink-0"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ffb800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Sem expor a empresa ao crédito</span></li>
           </ul>
-          <div class="flex flex-col" style="gap: 16px;">
-            <a href="#como-funciona" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Quero vender mais</a>
-            <a href="#cta" class="inline-flex items-center justify-center rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; border: 1px solid #371b01; background: transparent;" onmouseover="this.style.background='#371b01'; this.style.color='#ffffff';" onmouseout="this.style.background='transparent'; this.style.color='#371b01';">Falar com um especialista</a>
-          </div>
         </div>
 
-        <!-- SLIDE 3 (oculto) -->
+        <!-- SLIDE 3 -->
         <div class="hero-slide" data-slide="2" style="display: none; flex-direction: column; gap: 8px;">
-          <p style="font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 16px; line-height: 24px; color: #2e2e2e;">Fechamento mais rápido</p>
+          <p class="hero-kicker" data-kicker-full="Fechamento mais rápido" data-kicker-short="Fechamento mais rápido" style="font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 16px; line-height: 24px; color: #2e2e2e;">Fechamento mais rápido</p>
           <h1 style="font-family: 'Kufam', sans-serif; font-size: 40px; line-height: 48px; letter-spacing: 0.2px; color: #371b01; font-weight: 400; margin-top: 0;">
             <span style="font-weight: 700;">Feche vendas mais rápido </span><span style="font-weight: 400;">sem renegociar prazo com o cliente</span>
           </h1>
@@ -485,99 +460,30 @@
             Menos idas e vindas com o cliente.<br/>Mais negócios fechados no primeiro contato.
           </p>
           <ul class="flex flex-col" style="padding: 16px 0; gap: 16px;">
-            <li class="flex items-start" style="gap: 8px;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="flex-shrink-0"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ffb800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Aprovação em minutos</span>
-            </li>
-            <li class="flex items-start" style="gap: 8px;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="flex-shrink-0"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ffb800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Sem análise de crédito interna</span>
-            </li>
-            <li class="flex items-start" style="gap: 8px;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="flex-shrink-0"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ffb800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Confirmação imediata da operação</span>
-            </li>
+            <li class="flex items-start" style="gap: 8px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="flex-shrink-0"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ffb800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Aprovação em minutos</span></li>
+            <li class="flex items-start" style="gap: 8px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="flex-shrink-0"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ffb800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Sem análise de crédito interna</span></li>
+            <li class="flex items-start" style="gap: 8px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="flex-shrink-0"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ffb800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Confirmação imediata da operação</span></li>
           </ul>
-          <div class="flex flex-col" style="gap: 16px;">
-            <a href="#como-funciona" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Acelerar minhas vendas</a>
-            <a href="#cta" class="inline-flex items-center justify-center rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; border: 1px solid #371b01; background: transparent;" onmouseover="this.style.background='#371b01'; this.style.color='#ffffff';" onmouseout="this.style.background='transparent'; this.style.color='#371b01';">Falar com um especialista</a>
-          </div>
         </div>
+        </div><!-- /hero-slides-area -->
 
-        <!-- SLIDE 4 (oculto) -->
-        <div class="hero-slide" data-slide="3" style="display: none; flex-direction: column; gap: 8px;">
-          <p style="font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 16px; line-height: 24px; color: #2e2e2e;">Operação 100% digital</p>
-          <h1 style="font-family: 'Kufam', sans-serif; font-size: 40px; line-height: 48px; letter-spacing: 0.2px; color: #371b01; font-weight: 400; margin-top: 0;">
-            <span style="font-weight: 700;">Ative em 7 dias </span><span style="font-weight: 400;">sem integração técnica, 100% digital</span>
-          </h1>
-          <p style="font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01; margin-top: 0;">
-            Você continua emitindo boletos.<br/>O cliente escolhe pagar no cartão.
-          </p>
-          <ul class="flex flex-col" style="padding: 16px 0; gap: 16px;">
-            <li class="flex items-start" style="gap: 8px;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="flex-shrink-0"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ffb800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Setup em até 7 dias úteis</span>
-            </li>
-            <li class="flex items-start" style="gap: 8px;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="flex-shrink-0"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ffb800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Zero integração técnica</span>
-            </li>
-            <li class="flex items-start" style="gap: 8px;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="flex-shrink-0"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ffb800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Suporte dedicado na ativação</span>
-            </li>
-          </ul>
-          <div class="flex flex-col" style="gap: 16px;">
-            <a href="#como-funciona" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Quero ativar agora</a>
-            <a href="#cta" class="inline-flex items-center justify-center rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; border: 1px solid #371b01; background: transparent;" onmouseover="this.style.background='#371b01'; this.style.color='#ffffff';" onmouseout="this.style.background='transparent'; this.style.color='#371b01';">Falar com um especialista</a>
-          </div>
+        <!-- BOTÕES FIXOS (compartilhados, não mudam entre slides) -->
+        <div class="hero-buttons flex flex-col" style="gap: 16px;">
+          <a href="#como-funciona" class="hero-btn-primary inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Ver como funciona no meu negócio</a>
+          <a href="#cta" class="hero-btn-secondary inline-flex items-center justify-center rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; border: 1px solid #371b01; background: transparent;" onmouseover="this.style.background='#371b01'; this.style.color='#ffffff';" onmouseout="this.style.background='transparent'; this.style.color='#371b01';">Falar com um especialista</a>
         </div>
-
-        <!-- SLIDE 5 (oculto) -->
-        <div class="hero-slide" data-slide="4" style="display: none; flex-direction: column; gap: 8px;">
-          <p style="font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 16px; line-height: 24px; color: #2e2e2e;">Segurança institucional</p>
-          <h1 style="font-family: 'Kufam', sans-serif; font-size: 40px; line-height: 48px; letter-spacing: 0.2px; color: #371b01; font-weight: 400; margin-top: 0;">
-            <span style="font-weight: 700;">Infraestrutura Cielo </span><span style="font-weight: 400;">com 25 anos de Potencial Tecnologia</span>
-          </h1>
-          <p style="font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01; margin-top: 0;">
-            Conformidade total PCI DSS.<br/>Liquidação garantida pela adquirente.
-          </p>
-          <ul class="flex flex-col" style="padding: 16px 0; gap: 16px;">
-            <li class="flex items-start" style="gap: 8px;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="flex-shrink-0"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ffb800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Certificação PCI DSS Level 1</span>
-            </li>
-            <li class="flex items-start" style="gap: 8px;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="flex-shrink-0"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ffb800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Processamento pela Cielo</span>
-            </li>
-            <li class="flex items-start" style="gap: 8px;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="flex-shrink-0"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ffb800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">LGPD compliant</span>
-            </li>
-          </ul>
-          <div class="flex flex-col" style="gap: 16px;">
-            <a href="#como-funciona" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Conhecer a infraestrutura</a>
-            <a href="#cta" class="inline-flex items-center justify-center rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; border: 1px solid #371b01; background: transparent;" onmouseover="this.style.background='#371b01'; this.style.color='#ffffff';" onmouseout="this.style.background='transparent'; this.style.color='#371b01';">Falar com um especialista</a>
-          </div>
-        </div>
-
       </div>
 
       <!-- ===== COLUNA DIREITA: Imagem + setas + contador ===== -->
-      <div class="relative flex-shrink-0" style="width: 660px;">
-        <!-- Container das imagens (PNGs transparentes com shape+máscara embutidos) -->
-        <div class="relative" style="width: 660px; height: 620px;">
-          <!-- 5 PNGs sobrepostos, só 1 visível por vez -->
-          <img class="hero-slide-img" data-slide="0" src="public/images/sections/hero-slide-1.png" alt="Profissional sorridente com tablet" style="display: block; width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0;" />
-          <img class="hero-slide-img" data-slide="1" src="public/images/sections/hero-slide-2.png" alt="Profissional aprovando contrato comercial" style="display: none; width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0;" />
-          <img class="hero-slide-img" data-slide="2" src="public/images/sections/hero-slide-3.png" alt="Time comemorando fechamento rápido de venda" style="display: none; width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0;" />
-          <img class="hero-slide-img" data-slide="3" src="public/images/sections/hero-slide-4.png" alt="Plataforma digital sendo ativada" style="display: none; width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0;" />
-          <img class="hero-slide-img" data-slide="4" src="public/images/sections/hero-slide-5.png" alt="Servidores e infraestrutura tecnológica" style="display: none; width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0;" />
+      <div class="hero-col-img relative flex-shrink-0" style="width: 660px;">
+        <div class="hero-img-box relative" style="width: 660px; height: 620px;">
+          <img class="hero-slide-img" data-slide="0" src="public/images/sections/hero-slide-1.webp" alt="Profissional sorridente com tablet" style="display: block; width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0;" />
+          <img class="hero-slide-img" data-slide="1" src="public/images/sections/hero-slide-2.webp" alt="Profissional aprovando contrato comercial" style="display: none; width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0;" />
+          <img class="hero-slide-img" data-slide="2" src="public/images/sections/hero-slide-3.webp" alt="Time comemorando fechamento rápido de venda" style="display: none; width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0;" />
         </div>
 
-        <!-- Setas: BACK marrom + FORWARD amarela, 56x56 -->
-        <div class="absolute flex flex-col z-20" style="top: 444px; left: 4px; gap: 16px;">
+        <!-- Setas -->
+        <div class="hero-arrows absolute flex flex-col z-20" style="top: 444px; left: 4px; gap: 16px;">
           <button id="hero-prev" class="inline-flex items-center justify-center transition" style="background: #371b01; padding: 16px; border-radius: 8px; box-shadow: 0 4px 5px rgba(0,0,0,0.25); width: 56px; height: 56px;" aria-label="Anterior" onmouseover="this.style.background='#ffb800'; this.querySelector('svg path').setAttribute('stroke', '#371b01');" onmouseout="this.style.background='#371b01'; this.querySelector('svg path').setAttribute('stroke', '#ffb800');">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M12 19l-7-7 7-7" stroke="#ffb800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
@@ -586,18 +492,76 @@
           </button>
         </div>
 
-        <!-- Contador clicável (5 dots) -->
-        <div class="absolute flex items-center justify-end z-20" style="top: 589px; right: 0; gap: 8px; width: 100%; padding-right: 16px;">
+        <!-- Contador (3 dots) -->
+        <div class="hero-dots absolute flex items-center justify-end z-20" style="top: 589px; right: 0; gap: 8px; width: 100%; padding-right: 16px;">
           <button class="hero-dot rounded-full transition" data-slide="0" aria-label="Slide 1" style="height: 8px; width: 8px; background: #ffb800; padding: 0; border: none; cursor: pointer;"></button>
           <button class="hero-dot rounded-full transition" data-slide="1" aria-label="Slide 2" style="height: 8px; width: 8px; background: #371b01; padding: 0; border: none; cursor: pointer;"></button>
           <button class="hero-dot rounded-full transition" data-slide="2" aria-label="Slide 3" style="height: 8px; width: 8px; background: #371b01; padding: 0; border: none; cursor: pointer;"></button>
-          <button class="hero-dot rounded-full transition" data-slide="3" aria-label="Slide 4" style="height: 8px; width: 8px; background: #371b01; padding: 0; border: none; cursor: pointer;"></button>
-          <button class="hero-dot rounded-full transition" data-slide="4" aria-label="Slide 5" style="height: 8px; width: 8px; background: #371b01; padding: 0; border: none; cursor: pointer;"></button>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  /* kicker: full no desktop, short no mobile */
+  .kicker-short { display: none; }
+  /* desktop: slides sobrepostos (absolutos) para a área ter altura fixa e os botões não se moverem */
+  .hero-slides-area { position: relative; }
+  .hero-slides-area .hero-slide { position: absolute; top: 0; left: 0; width: 100%; }
+  /* ===== HERO MOBILE (<768px): imagem em cima -> texto -> botões largura total + contador ===== */
+  @media (max-width: 767px) {
+    .kicker-full { display: none; }
+    .kicker-short { display: inline; }
+    /* mobile: slides voltam ao fluxo normal (não absolutos) */
+    #solucao .hero-slides-area { min-height: 0 !important; }
+    #solucao .hero-slides-area .hero-slide { position: relative !important; }
+    #solucao .hero-slider, #solucao #hero-slider { flex-direction: column !important; }
+    /* imagem primeiro */
+    #solucao .hero-col-img { order: -1 !important; width: 100% !important; }
+    /* mobile usa a imagem dedicada (formato domo) como background do box */
+    #solucao .hero-img-box {
+      width: 100% !important;
+      height: auto !important;
+      aspect-ratio: 801 / 856;
+      background-image: url('public/images/sections/hero-slide-mobile-1.webp');
+      background-size: contain;
+      background-position: center top;
+      background-repeat: no-repeat;
+    }
+    /* esconde as imagens desktop no mobile (JS controla display inline, por isso o !important) */
+    #solucao .hero-img-box .hero-slide-img { display: none !important; }
+    /* texto depois */
+    #solucao .hero-col-text { order: 1 !important; padding-top: 24px !important; max-width: 100% !important; min-height: 0 !important; }
+    /* kicker resumido: esconde o full, mostra o short */
+    #solucao .hero-kicker { font-size: 14px !important; }
+    /* h1 menor no mobile */
+    #solucao .hero-col-text h1 { font-size: 32px !important; line-height: 40px !important; }
+    /* botões: largura total da tela */
+    #solucao .hero-buttons { width: 100% !important; }
+    #solucao .hero-btn-primary, #solucao .hero-btn-secondary { width: 100% !important; }
+    /* setas: visíveis no mobile, sobrepondo a imagem (idênticas ao desktop) */
+    #solucao .hero-arrows {
+      display: flex !important;
+      flex-direction: row !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      position: absolute !important;
+      top: 50% !important;
+      left: 0 !important;
+      right: 0 !important;
+      transform: translateY(-50%) !important;
+      width: 100% !important;
+      padding: 0 12px !important;
+      gap: 0 !important;
+      pointer-events: none !important;
+    }
+    #solucao .hero-arrows > button { pointer-events: auto !important; }
+    /* contador: reposiciona abaixo da imagem, centralizado */
+    #solucao .hero-dots { position: static !important; justify-content: center !important; padding: 16px 0 0 0 !important; width: 100% !important; }
+  }
+</style>
+
 
 <!-- ============ HERO SLIDER SCRIPT ============ -->
 <script>
