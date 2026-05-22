@@ -1273,12 +1273,18 @@
   </div>
 
   <!-- ===== VERSÃO MOBILE FAQ (<768px) — Figma node 4010:14467 (412px) ===== -->
-  <div class="faq-mobile" style="display: none; position: relative; padding: 8px 0 56px 0;">
-    <!-- Foto topo, largura cheia (Figma Appearance: cantos tl 0, tr 240, br 0, bl 0 — só top-right arredondado). Foto SEM shape amarelo.
-         TODO: trocar src por webp mobile limpa (sem amarelo) exportada do Figma; por ora crop esconde o amarelo do PNG desktop -->
-    <div style="position: relative; width: 100%; aspect-ratio: 412 / 421; overflow: hidden; border-radius: 0 240px 0 0;">
-      <img src="public/images/sections/secao-faq.png" alt="Profissional sorridente com notebook" style="width: 120%; height: 120%; object-fit: cover; object-position: 88% 12%; display: block;" />
+  <div class="faq-mobile" style="display: none; position: relative; padding: 0;">
+    <!-- Topo branco (continua a dobra de cima): foto com canto tr arredondado revela BRANCO, não bege -->
+    <div style="background: #fff; padding-top: 8px;">
+      <!-- Foto topo, largura cheia (Figma Appearance: cantos tl 0, tr 240, br 0, bl 0 — só top-right arredondado). Foto SEM shape amarelo.
+           TODO: trocar src por webp mobile limpa (sem amarelo) exportada do Figma; por ora crop esconde o amarelo do PNG desktop -->
+      <div style="position: relative; width: 100%; aspect-ratio: 412 / 421; overflow: hidden; border-radius: 0 240px 0 0;">
+        <img src="public/images/sections/secao-faq.png" alt="Profissional sorridente com notebook" style="width: 120%; height: 120%; object-fit: cover; object-position: 88% 12%; display: block;" />
+      </div>
     </div>
+
+    <!-- Conteúdo FAQ sobre fundo bege (começa abaixo da foto) -->
+    <div style="background: #f8f6f0; padding-bottom: 56px;">
 
     <!-- Bloco FAQ (pad lateral 36, abaixo da foto) -->
     <div style="padding: 0 36px;">
@@ -1352,6 +1358,7 @@
       <!-- Label final -->
       <p style="margin-top: 12px; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Ainda tem dúvidas?<br/><a href="#cta" style="font-weight: 700; color: #1f4fd8;">Fale com um especialista.</a></p>
     </div>
+    </div><!-- /wrapper bege -->
   </div><!-- /faq-mobile -->
 </section>
 
