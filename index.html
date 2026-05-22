@@ -1156,8 +1156,8 @@
 </section>
 
 <!-- ============ DOBRA 15 - FAQ ============ -->
-<section class="bg-brand-beige-light overflow-hidden relative" style="padding: 0 107px 56px 107px;">
-  <div class="relative" style="max-width: 1153px; margin: 0 auto; min-height: 1600px;">
+<section id="faq" class="bg-brand-beige-light overflow-hidden relative" style="padding: 0 107px 0 107px;">
+  <div class="faq-desktop relative" style="max-width: 1153px; margin: 0 auto; min-height: 1441px;">
 
     <!-- PNG transparente com foto + shape amarelo embutidos -->
     <img src="public/images/sections/secao-faq.png" alt="Profissional sorridente com notebook" class="absolute block" style="top: 116px; left: 98px; width: 661px; height: auto;" />
@@ -1186,10 +1186,10 @@
         </div>
       </div>
 
-      <!-- Accordion (gap 32px entre items, padding-top do bloco vem do gap-12 do parent) -->
-      <div class="flex flex-col" style="gap: 32px; margin-top: 12px;">
+      <!-- Accordion (gap 12px entre items conforme Figma, margin-top 12 do header) -->
+      <div class="flex flex-col" style="gap: 12px; margin-top: 12px;">
         <!-- Pergunta 1 (aberta por padrão) -->
-        <details open class="group bg-brand-yellow overflow-hidden" style="border-radius: 8px;">
+        <details open class="group bg-brand-yellow overflow-hidden" style="border-radius: 16px;">
           <summary class="flex items-start cursor-pointer list-none" style="gap: 16px; padding: 12px 24px;">
             <span class="flex-1" style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">Quem assume o risco da operação?</span>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#371b01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 transition-transform group-open:rotate-180">
@@ -1202,7 +1202,7 @@
         </details>
 
         <!-- Pergunta 2 (fechada) -->
-        <details class="group bg-brand-yellow overflow-hidden" style="border-radius: 8px;">
+        <details class="group bg-brand-yellow overflow-hidden" style="border-radius: 16px;">
           <summary class="flex items-start cursor-pointer list-none" style="gap: 16px; padding: 12px 24px;">
             <span class="flex-1" style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">É seguro oferecer parcelamento para meus clientes?</span>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#371b01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 transition-transform group-open:rotate-180">
@@ -1215,7 +1215,7 @@
         </details>
 
         <!-- Pergunta 3 (fechada) -->
-        <details class="group bg-brand-yellow overflow-hidden" style="border-radius: 8px;">
+        <details class="group bg-brand-yellow overflow-hidden" style="border-radius: 16px;">
           <summary class="flex items-start cursor-pointer list-none" style="gap: 16px; padding: 12px 24px;">
             <span class="flex-1" style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">Em quanto tempo o valor é liquidado?</span>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#371b01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 transition-transform group-open:rotate-180">
@@ -1228,7 +1228,7 @@
         </details>
 
         <!-- Pergunta 4 (fechada) -->
-        <details class="group bg-brand-yellow overflow-hidden" style="border-radius: 8px;">
+        <details class="group bg-brand-yellow overflow-hidden" style="border-radius: 16px;">
           <summary class="flex items-start cursor-pointer list-none" style="gap: 16px; padding: 12px 24px;">
             <span class="flex-1" style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">Quais pagamentos podem ser parcelados?</span>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#371b01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 transition-transform group-open:rotate-180">
@@ -1241,7 +1241,7 @@
         </details>
 
         <!-- Pergunta 5 (fechada) -->
-        <details class="group bg-brand-yellow overflow-hidden" style="border-radius: 8px;">
+        <details class="group bg-brand-yellow overflow-hidden" style="border-radius: 16px;">
           <summary class="flex items-start cursor-pointer list-none" style="gap: 16px; padding: 12px 24px;">
             <span class="flex-1" style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">Existe risco de inadimplência para o escritório?</span>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#371b01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 transition-transform group-open:rotate-180">
@@ -1254,7 +1254,7 @@
         </details>
 
         <!-- Pergunta 6 (fechada) -->
-        <details class="group bg-brand-yellow overflow-hidden" style="border-radius: 8px;">
+        <details class="group bg-brand-yellow overflow-hidden" style="border-radius: 16px;">
           <summary class="flex items-start cursor-pointer list-none" style="gap: 16px; padding: 12px 24px;">
             <span class="flex-1" style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">O cliente pode usar mais de um cartão?</span>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#371b01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 transition-transform group-open:rotate-180">
@@ -1271,7 +1271,112 @@
       <p style="margin-top: 12px; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Ainda tem dúvidas? <a href="#cta" style="font-weight: 700; color: #1f4fd8;">Fale com um especialista.</a></p>
     </div>
   </div>
+
+  <!-- ===== VERSÃO MOBILE FAQ (<768px) — Figma node 4010:14467 (412px) ===== -->
+  <div class="faq-mobile" style="display: none; position: relative; padding: 8px 0 56px 0;">
+    <!-- Foto topo, largura cheia (Figma Appearance: cantos tl 32, tr 240, bl 0, br 0). Foto SEM shape amarelo.
+         TODO: trocar src por webp mobile limpa (sem amarelo) exportada do Figma; por ora crop esconde o amarelo do PNG desktop -->
+    <div style="position: relative; width: 100%; aspect-ratio: 412 / 421; overflow: hidden; border-radius: 32px 240px 0 0;">
+      <img src="public/images/sections/secao-faq.png" alt="Profissional sorridente com notebook" style="width: 120%; height: 120%; object-fit: cover; object-position: 88% 12%; display: block;" />
+    </div>
+
+    <!-- Bloco FAQ (pad lateral 36, abaixo da foto) -->
+    <div style="padding: 0 36px;">
+      <!-- Header: kicker + headline + subtitle (Figma: kicker y48, headline y86, subtitle y286) -->
+      <div style="padding-top: 48px;">
+        <p style="font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0 0 10px 0;">Dúvidas frequentes</p>
+        <h2 style="font-family: 'Kufam', sans-serif; font-size: 32px; line-height: 40px; letter-spacing: 0.2px; color: #371b01; margin: 0 0 8px 0;">
+          <span style="font-weight: 400;">Pronto para fechar </span><span style="font-weight: 700;">mais negócios sem risco financeiro?</span>
+        </h2>
+        <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">Pagamentos são uma das principais objeções no fechamento de negócios imobiliários. Aqui estão as respostas para as dúvidas mais comuns antes de ativar o Parcele Aqui.</p>
+      </div>
+
+      <!-- Accordion mobile (gap 12px conforme Figma) -->
+      <div class="flex flex-col" style="gap: 12px; margin-top: 24px;">
+        <details open class="group bg-brand-yellow overflow-hidden" style="border-radius: 16px;">
+          <summary class="flex items-start cursor-pointer list-none" style="gap: 16px; padding: 12px 24px;">
+            <span class="flex-1" style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">Quem assume o risco da operação?</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#371b01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 transition-transform group-open:rotate-180"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="bg-white border-t border-brand-yellow" style="padding: 16px 24px 24px 24px;">
+            <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">Sim. A solução é desenvolvida pela Potencial Tecnologia, com mais de 25 anos de experiência, infraestrutura certificada e integração com adquirentes líderes.</p>
+          </div>
+        </details>
+        <details class="group bg-brand-yellow overflow-hidden" style="border-radius: 16px;">
+          <summary class="flex items-start cursor-pointer list-none" style="gap: 16px; padding: 12px 24px;">
+            <span class="flex-1" style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">É seguro oferecer parcelamento para meus clientes?</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#371b01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 transition-transform group-open:rotate-180"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="bg-white border-t border-brand-yellow" style="padding: 16px 24px 24px 24px;">
+            <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">Sim. Toda operação é processada com infraestrutura certificada Cielo, padrões PCI DSS e conformidade regulatória completa.</p>
+          </div>
+        </details>
+        <details class="group bg-brand-yellow overflow-hidden" style="border-radius: 16px;">
+          <summary class="flex items-start cursor-pointer list-none" style="gap: 16px; padding: 12px 24px;">
+            <span class="flex-1" style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">Em quanto tempo o valor é liquidado?</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#371b01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 transition-transform group-open:rotate-180"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="bg-white border-t border-brand-yellow" style="padding: 16px 24px 24px 24px;">
+            <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">A liquidação acontece à vista para sua empresa, independentemente de quantas parcelas o cliente escolher pagar no cartão.</p>
+          </div>
+        </details>
+        <details class="group bg-brand-yellow overflow-hidden" style="border-radius: 16px;">
+          <summary class="flex items-start cursor-pointer list-none" style="gap: 16px; padding: 12px 24px;">
+            <span class="flex-1" style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">Quais pagamentos podem ser parcelados?</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#371b01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 transition-transform group-open:rotate-180"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="bg-white border-t border-brand-yellow" style="padding: 16px 24px 24px 24px;">
+            <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">Boletos, mensalidades, taxas e encargos diversos. Praticamente qualquer cobrança emitida pela sua empresa pode ser parcelada pelo cliente.</p>
+          </div>
+        </details>
+        <details class="group bg-brand-yellow overflow-hidden" style="border-radius: 16px;">
+          <summary class="flex items-start cursor-pointer list-none" style="gap: 16px; padding: 12px 24px;">
+            <span class="flex-1" style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">Existe risco de inadimplência para o escritório?</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#371b01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 transition-transform group-open:rotate-180"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="bg-white border-t border-brand-yellow" style="padding: 16px 24px 24px 24px;">
+            <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">Não. Sua empresa recebe o valor à vista, independentemente do parcelamento escolhido pelo cliente. O risco de crédito fica com a operadora.</p>
+          </div>
+        </details>
+        <details class="group bg-brand-yellow overflow-hidden" style="border-radius: 16px;">
+          <summary class="flex items-start cursor-pointer list-none" style="gap: 16px; padding: 12px 24px;">
+            <span class="flex-1" style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: #371b01;">O cliente pode usar mais de um cartão?</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#371b01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 transition-transform group-open:rotate-180"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="bg-white border-t border-brand-yellow" style="padding: 16px 24px 24px 24px;">
+            <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">Sim. O cliente pode dividir o valor em até 3 cartões diferentes, ampliando o limite total e facilitando a aprovação da operação.</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- Label final -->
+      <p style="margin-top: 12px; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e;">Ainda tem dúvidas?<br/><a href="#cta" style="font-weight: 700; color: #1f4fd8;">Fale com um especialista.</a></p>
+    </div>
+  </div><!-- /faq-mobile -->
 </section>
+
+<style>
+  /* Responsividade dobra FAQ */
+  @media (max-width: 767px) {
+    .faq-desktop { display: none !important; }
+    .faq-mobile { display: block !important; }
+    #faq { padding-left: 0 !important; padding-right: 0 !important; }
+  }
+  /* Contorno amarelo no accordion ABERTO (FAQ desktop + mobile) */
+  #faq details[open] {
+    border: 2px solid #ffb800;
+    background: #fff !important;
+  }
+  #faq details[open] > summary {
+    background: #ffb800;
+  }
+  #faq details[open] > div {
+    border-top: none !important;
+  }
+  #faq details:not([open]) {
+    border: 2px solid transparent;
+  }
+</style>
 
 <!-- ============ DOBRA 14 - CTA FINAL ============ -->
 <section id="cta" class="bg-white relative overflow-hidden" style="padding: 0 107px 96px 107px;">
