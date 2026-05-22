@@ -236,6 +236,33 @@
     /* RESPIRO PADRÃO DO TOPO: 56px de padding-top em todas as dobras (Figma mobile).
        O hero (#solucao) é exceção: tem diagramação própria (imagem cola no topo). */
     section:not(#solucao) { padding-top: 56px !important; }
+    /* RESPIRO PADRÃO DA BASE: padding-bottom de desktop (96-140px) é excessivo no mobile.
+       Padroniza em 56px. Seções com mobile dedicado/0 mantêm o seu. */
+    section:not(#solucao):not(#como-funciona):not(#faq) { padding-bottom: 56px !important; }
+
+    /* CORREÇÃO DE ESPAÇOS EM BRANCO: colunas/boxes com altura fixa de desktop
+       reservam espaço vazio no mobile. Neutraliza alturas fixas para auto. */
+    section [style*="height: 521px"],
+    section [style*="height: 520px"],
+    section [style*="height: 620px"],
+    section [style*="height: 600px"],
+    section [style*="height: 512px"],
+    section [style*="height: 480px"],
+    section [style*="height: 460px"],
+    section [style*="height: 440px"],
+    section [style*="height: 420px"],
+    section [style*="height: 400px"] { height: auto !important; }
+
+    /* QUEBRAS DE TEXTO: headlines de 40px (desktop) ficam grandes demais e quebram
+       feio no mobile. Reduz para 28px/34px. Hero e Como Funciona têm regra própria. */
+    section:not(#solucao):not(#como-funciona) h2[style*="font-size: 40px"] {
+      font-size: 28px !important;
+      line-height: 34px !important;
+    }
+
+    /* TIPOGRAFIA MOBILE: títulos de dobra (h2 40px desktop) -> 28px no mobile.
+       Evita quebras feias e títulos gigantes. Hero (h1) tem regra própria. */
+    section h2[style*="font-size: 40px"] { font-size: 28px !important; line-height: 34px !important; }
 
     /* containers fixos viram fluidos */
     section [style*="max-width: 1153px"],
@@ -302,6 +329,8 @@
     /* grids/flex de cards (4 ou 2 colunas) -> 1 coluna empilhada no mobile */
     section [style*="grid-template-columns: repeat(4"],
     section [style*="grid-template-columns: repeat(2"] { grid-template-columns: 1fr !important; }
+    /* EXCEÇÃO: grid de logos da Empresas fica em 2 colunas (mais compacto que 1) */
+    #empresas [style*="grid-template-columns: repeat(4"] { grid-template-columns: repeat(2, 1fr) !important; row-gap: 32px !important; }
     /* flex de cards com altura fixa -> coluna, altura auto */
     section .flex[style*="height: 248px"],
     section .flex[style*="height: 160px"] { flex-direction: column !important; height: auto !important; gap: 16px !important; }
@@ -1011,6 +1040,12 @@
   @media (max-width: 767px) {
     #como-funciona .cf-desktop { display: none !important; }
     #como-funciona .cf-mobile { display: block !important; }
+    /* título sobreposto: reduz de 40px para caber sem cortar */
+    #como-funciona .cf-mobile h2 { font-size: 26px !important; line-height: 32px !important; }
+    /* texto sobe para dar espaço ao card */
+    #como-funciona .cf-mobile [style*="top: 49.1%"] { top: 40% !important; }
+    /* card sobrepõe menos a foto (era -88px) */
+    #como-funciona .cf-mobile [style*="margin-top: -88px"] { margin-top: -48px !important; }
   }
 </style>
 
@@ -1132,7 +1167,7 @@
 </section>
 
 <!-- ============ DOBRA 7 - EMPRESAS QUE UTILIZAM ============ -->
-<section class="bg-white relative overflow-hidden" style="padding: 16px 107px 140px 107px;">
+<section id="empresas" class="bg-white relative overflow-hidden" style="padding: 16px 107px 140px 107px;">
   <!-- Topo do iMac ancorado no canto inferior direito, sangrando pra baixo.
        Recuo exato do Figma: imagem 670px de largura, left:768 no frame 1366 → sangra 72px além da borda direita.
        Encaixa com o resto do iMac (Imagem dobra 5) no início da Dobra Modelos abaixo. -->
