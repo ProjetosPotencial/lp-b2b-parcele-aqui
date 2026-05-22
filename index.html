@@ -1535,5 +1535,20 @@
   })(window, document, "clarity", "script", "wpkakfpd2p");
 </script>
 
+<!-- FAQ: accordion exclusivo (abrir um fecha os demais do mesmo grupo) -->
+<script>
+  (function () {
+    document.querySelectorAll('#faq details').forEach(function (det) {
+      det.addEventListener('toggle', function () {
+        if (!det.open) return;
+        var group = det.parentElement; // container do grupo (desktop ou mobile)
+        group.querySelectorAll(':scope > details').forEach(function (other) {
+          if (other !== det) other.open = false;
+        });
+      });
+    });
+  })();
+</script>
+
 </body>
 </html>
