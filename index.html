@@ -977,56 +977,55 @@
   </div>
   </div><!-- /cf-desktop -->
 
-  <!-- ===== VERSÃO MOBILE (<768px) — Figma node 4010:13907 (412px) ===== -->
-  <div class="cf-mobile" style="display: none; position: relative; padding: 49px 36px 56px 36px;">
-    <!-- Shape amarelo: Figma x=412 y=426 w=412 h=820 -> vaza à direita e ~56px abaixo do card. -->
-    <div aria-hidden="true" style="position: absolute; background: #ffb800; width: 360px; height: 820px; border-radius: 32px; right: -24px; top: 377px; z-index: 0;"></div>
+  <!-- ===== VERSÃO MOBILE (<768px) — Figma node 4010:13909 (412px) PIXEL PERFECT ===== -->
+  <div class="cf-mobile" style="display: none; position: relative; padding: 56px 0;">
+    <!-- Shape amarelo atrás do card — Figma 412x820 (largura total da dobra) -->
+    <div aria-hidden="true" style="position: absolute; background: #ffb800; left: -36px; right: -36px; height: 820px; top: 500px; border-radius: 0; z-index: 0;"></div>
 
-    <!-- Wrapper conteúdo (340px centrado, pad lateral 36) -->
-    <div style="position: relative; width: 100%; max-width: 340px; margin: 0 auto; z-index: 1;">
+    <!-- Wrapper conteúdo (largura total disponível: tela - 36px lateral via padding do cf-mobile) -->
+    <div style="position: relative; width: 100%; margin: 0 auto; z-index: 1;">
 
-      <!-- Foto portrait (340x580) com cantos: tl 32, tr 160 (curva grande), bl 32, br 32 -->
+      <!-- Foto portrait com texto sobreposto na base. Figma: 340x580. Cantos tl32 tr160 bl32 br32 -->
       <div style="position: relative; width: 100%;">
-        <div style="position: relative; width: 100%; aspect-ratio: 340 / 580; overflow: hidden; border-radius: 32px 160px 32px 32px;">
-          <img src="public/images/sections/secao-como-funciona.webp" alt="Profissional sorridente em ambiente moderno" style="width: 100%; height: 100%; object-fit: cover; object-position: 28% center; display: block;" />
-          <!-- Vinheta escura na base para legibilidade do texto -->
-          <div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.55) 78%, rgba(0,0,0,0.75) 100%); border-radius: 32px 160px 32px 32px;"></div>
+        <div style="position: relative; width: 100%; aspect-ratio: 340 / 580; overflow: hidden; border-radius: 32px 160px 32px 32px; background-image: url('public/images/sections/secao-como-funciona.webp'); background-size: cover; background-position: 32% 28%; background-repeat: no-repeat; background-color: #2b2b2b;">
+          <!-- Vinheta escura na base para legibilidade do texto branco -->
+          <div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.55) 70%, rgba(0,0,0,0.78) 100%);"></div>
 
-          <!-- Texto sobreposto (Figma: top 285 na imagem de 580 = ~49%, pad-left 32, gap 8) -->
-          <div style="position: absolute; top: 49.1%; left: 0; padding: 0 32px; width: 100%; display: flex; flex-direction: column; gap: 8px;">
-            <p style="font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 16px; line-height: 24px; color: #f8f6f0;">Como funciona na prática</p>
-            <h2 style="font-family: 'Kufam', sans-serif; font-size: 40px; line-height: 48px; letter-spacing: 0.2px; color: #f8f6f0; font-weight: 400; margin: 0;">
+          <!-- Texto branco sobreposto na parte de baixo da foto (subido para dar espaço ao card) -->
+          <div style="position: absolute; bottom: 76px; left: 0; padding: 0 32px; width: 100%; display: flex; flex-direction: column; gap: 8px;">
+            <p style="font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 16px; line-height: 24px; color: #f8f6f0; margin: 0;">Como funciona na prática</p>
+            <h2 style="font-family: 'Kufam', sans-serif; font-size: 32px; line-height: 40px; letter-spacing: 0.2px; color: #f8f6f0; font-weight: 400; margin: 0;">
               <span style="font-weight: 400;">Simples, rápido </span><span style="font-weight: 700;">e 100% digital.</span>
             </h2>
           </div>
         </div>
 
-        <!-- Card creme vertical sobreposto (Figma: começa em y=544 no frame; foto base = 629 -> sobrepõe ~85px) -->
-        <div style="position: relative; margin-top: -88px; z-index: 2;">
-          <div style="background: #f8f6f0; border-radius: 16px; padding: 32px 32px; display: flex; flex-direction: column;">
+        <!-- Card creme sobrepondo MAIS a base da foto -->
+        <div style="position: relative; margin-top: -56px; z-index: 2;">
+          <div style="background: #f8f6f0; border-radius: 32px; padding: 56px 32px 32px 32px; display: flex; flex-direction: column;">
             <!-- Passo 01 -->
             <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px;">
-              <p style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 24px; line-height: 40px; color: #371b01; margin: 0;">01.</p>
-              <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; letter-spacing: -0.32px; color: #111; margin: 0;">Sua empresa emite o boleto normalmente</p>
+              <p style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 32px; line-height: 40px; color: #371b01; margin: 0;">01.</p>
+              <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; letter-spacing: -0.32px; color: #371b01; margin: 0;">Sua empresa emite<br/>o boleto normalmente</p>
             </div>
-            <!-- Separador horizontal -->
-            <div style="width: 232px; height: 2px; background: #e6ac00; border-radius: 16px; margin: 32px auto;"></div>
+            <!-- Separador -->
+            <div style="width: 160px; height: 2px; background: #ffb800; margin: 32px auto;"></div>
             <!-- Passo 02 -->
             <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px;">
-              <p style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 24px; line-height: 40px; color: #371b01; margin: 0;">02.</p>
-              <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #111; margin: 0;">O cliente escolhe parcelar com o Parcele Aqui</p>
+              <p style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 32px; line-height: 40px; color: #371b01; margin: 0;">02.</p>
+              <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #371b01; margin: 0;">O cliente escolhe parcelar<br/>com o Parcele Aqui</p>
             </div>
-            <div style="width: 232px; height: 2px; background: #e6ac00; border-radius: 16px; margin: 32px auto;"></div>
+            <div style="width: 160px; height: 2px; background: #ffb800; margin: 32px auto;"></div>
             <!-- Passo 03 -->
             <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px;">
-              <p style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 24px; line-height: 40px; color: #371b01; margin: 0;">03.</p>
-              <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; letter-spacing: -0.32px; color: #111; margin: 0;">O cliente escolhe as parcelas e paga no cartão</p>
+              <p style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 32px; line-height: 40px; color: #371b01; margin: 0;">03.</p>
+              <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; letter-spacing: -0.32px; color: #371b01; margin: 0;">O cliente escolhe as parcelas<br/>e paga no cartão</p>
             </div>
-            <div style="width: 232px; height: 2px; background: #e6ac00; border-radius: 16px; margin: 32px auto;"></div>
+            <div style="width: 160px; height: 2px; background: #ffb800; margin: 32px auto;"></div>
             <!-- Passo 04 -->
             <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px;">
-              <p style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 24px; line-height: 40px; color: #371b01; margin: 0;">04.</p>
-              <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; letter-spacing: -0.32px; color: #111; margin: 0;">Boleto liquidado à vista para sua empresa</p>
+              <p style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 32px; line-height: 40px; color: #371b01; margin: 0;">04.</p>
+              <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; letter-spacing: -0.32px; color: #371b01; margin: 0;">Boleto liquidado à vista<br/>para sua empresa</p>
             </div>
           </div>
         </div>
@@ -1040,12 +1039,6 @@
   @media (max-width: 767px) {
     #como-funciona .cf-desktop { display: none !important; }
     #como-funciona .cf-mobile { display: block !important; }
-    /* título sobreposto: reduz de 40px para caber sem cortar */
-    #como-funciona .cf-mobile h2 { font-size: 26px !important; line-height: 32px !important; }
-    /* texto sobe para dar espaço ao card */
-    #como-funciona .cf-mobile [style*="top: 49.1%"] { top: 40% !important; }
-    /* card sobrepõe menos a foto (era -88px) */
-    #como-funciona .cf-mobile [style*="margin-top: -88px"] { margin-top: -48px !important; }
   }
 </style>
 
