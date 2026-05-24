@@ -979,9 +979,6 @@
 
   <!-- ===== VERSÃO MOBILE (<768px) — Figma node 4010:13909 (412px) PIXEL PERFECT ===== -->
   <div class="cf-mobile" style="display: none; position: relative; padding: 56px 0;">
-    <!-- Shape amarelo atrás do card — Figma 412x820 (largura total da dobra) -->
-    <div aria-hidden="true" style="position: absolute; background: #ffb800; left: -36px; right: -36px; height: 768px; top: 500px; border-radius: 0; z-index: 0;"></div>
-
     <!-- Wrapper conteúdo (largura total disponível: tela - 36px lateral via padding do cf-mobile) -->
     <div style="position: relative; width: 100%; margin: 0 auto; z-index: 1;">
 
@@ -999,8 +996,10 @@
           </div>
         </div>
 
-        <!-- Card creme sobrepondo MAIS a base da foto -->
-        <div style="position: relative; margin-top: -56px; z-index: 2;">
+        <!-- Card creme sobrepondo MAIS a base da foto. padding-bottom:56px cria a faixa amarela inferior de forma estável (sem bottom negativo). -->
+        <div style="position: relative; margin-top: -56px; padding-bottom: 56px; z-index: 2;">
+          <!-- Shape amarelo full-bleed: preenche TODO este container (inclui os 56px de padding-bottom) e sobe 56px atrás da transição foto→card. Robusto em qualquer navegador. -->
+          <div aria-hidden="true" style="position: absolute; background: #ffb800; left: -36px; right: -36px; top: -56px; bottom: 0; z-index: -1;"></div>
           <div style="background: #f8f6f0; border-radius: 32px; padding: 56px 32px 32px 32px; display: flex; flex-direction: column;">
             <!-- Passo 01 -->
             <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px;">
