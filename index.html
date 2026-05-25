@@ -242,6 +242,10 @@
     .impacto-desktop { display: none !important; }
     .impacto-mobile { display: block !important; }
     .imp-track::-webkit-scrollbar { display: none; }
+    /* Carrossel Quem está por trás: esconde grade desktop, mostra carrossel no mobile */
+    .quem-desktop { display: none !important; }
+    .quem-mobile { display: block !important; }
+    .quem-track::-webkit-scrollbar { display: none; }
     /* Aproxima o CTA "Simular uma operação" da imagem da dobra Como Funciona: 32px no mobile. Especificidade reforçada para superar a regra global com 3x :not(). Desktop mantém o padding inline de 96px. */
     section#solucao-cta:not(#solucao):not(#como-funciona):not(#faq) { padding-bottom: 32px !important; }
     /* RESPIRO PADRÃO DA BASE: padding-bottom de desktop (96-140px) é excessivo no mobile.
@@ -1401,8 +1405,8 @@
         </div>
       </div>
 
-      <!-- COLUNA DIREITA: Grid 2 linhas × 3 cards (cada card 220×227, gap-24, gap entre linhas 18px) -->
-      <div class="flex flex-col flex-shrink-0" style="gap: 18px;">
+      <!-- COLUNA DIREITA: Grid 2 linhas × 3 cards — DESKTOP -->
+      <div class="quem-desktop flex flex-col flex-shrink-0" style="gap: 18px;">
 
         <!-- LINHA 1: 25 anos / 100% digital / 24/07 -->
         <div class="flex" style="gap: 24px;">
@@ -1465,6 +1469,68 @@
           </article>
         </div>
 
+      </div>
+    </div>
+
+    <!-- ===== CARROSSEL MOBILE (<768px) — Quem está por trás. Borda verde, controles verdes ===== -->
+    <div class="quem-mobile" style="display: none; width: 100%;">
+      <div class="quem-track" style="display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 4px;">
+        <!-- Card 01 -->
+        <article class="quem-card" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #009F44; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
+          <img src="public/images/icons/quem-01.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
+          <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01; margin: 8px 0 0 0;">25 anos de mercado</h3>
+          <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">Desenvolvendo soluções digitais</p>
+        </article>
+        <!-- Card 02 -->
+        <article class="quem-card" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #009F44; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
+          <img src="public/images/icons/quem-02.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
+          <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01; margin: 8px 0 0 0;">100% digital</h3>
+          <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">Plataforma totalmente online e automatizada</p>
+        </article>
+        <!-- Card 03 -->
+        <article class="quem-card" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #009F44; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
+          <img src="public/images/icons/quem-03.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
+          <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01; margin: 8px 0 0 0;">24/07 disponibilidade</h3>
+          <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">Sistema operando ininterruptamente</p>
+        </article>
+        <!-- Card 04 -->
+        <article class="quem-card" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #009F44; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
+          <img src="public/images/icons/quem-04.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
+          <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01; margin: 8px 0 0 0;">Infraestrutura</h3>
+          <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">robusta e certificada</p>
+        </article>
+        <!-- Card 05 -->
+        <article class="quem-card" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #009F44; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
+          <img src="public/images/icons/quem-05.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
+          <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01; margin: 8px 0 0 0;">Parcerias</h3>
+          <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">corporativas e governamentais</p>
+        </article>
+        <!-- Card 06 -->
+        <article class="quem-card" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #009F44; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
+          <img src="public/images/icons/quem-06.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
+          <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01; margin: 8px 0 0 0;">Especialista</h3>
+          <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">em meios de pagamento e automação de transações</p>
+        </article>
+      </div>
+
+      <!-- Controles: bolinhas à esquerda, setas juntas à direita (verde Potencial) -->
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 24px;">
+        <div class="quem-dots" style="display: flex; gap: 8px; align-items: center;">
+          <span data-i="0" style="width: 8px; height: 8px; border-radius: 999px; background: #009F44; transition: all 0.2s;"></span>
+          <span data-i="1" style="width: 8px; height: 8px; border-radius: 999px; background: #d4e8da; transition: all 0.2s;"></span>
+          <span data-i="2" style="width: 8px; height: 8px; border-radius: 999px; background: #d4e8da; transition: all 0.2s;"></span>
+          <span data-i="3" style="width: 8px; height: 8px; border-radius: 999px; background: #d4e8da; transition: all 0.2s;"></span>
+          <span data-i="4" style="width: 8px; height: 8px; border-radius: 999px; background: #d4e8da; transition: all 0.2s;"></span>
+          <span data-i="5" style="width: 8px; height: 8px; border-radius: 999px; background: #d4e8da; transition: all 0.2s;"></span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; flex-shrink: 0;">
+          <button type="button" class="quem-prev" aria-label="Anterior" style="width: 44px; height: 44px; border-radius: 999px; border: 1px solid #009F44; background: #009F44; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button type="button" class="quem-next" aria-label="Próximo" style="width: 44px; height: 44px; border-radius: 999px; border: 1px solid #009F44; background: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#009F44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -1949,19 +2015,19 @@
 
 <script>
 (function(){
-  function initImpacto(){
-    var wrap = document.querySelector('.impacto-mobile');
+  function initCarousel(wrapSelector, trackClass, cardClass, dotsClass, prevClass, nextClass, activeColor, inactiveColor){
+    var wrap = document.querySelector(wrapSelector);
     if(!wrap) return;
-    var track = wrap.querySelector('.imp-track');
-    var cards = wrap.querySelectorAll('.imp-card');
-    var dots = wrap.querySelectorAll('.imp-dots span');
-    var prev = wrap.querySelector('.imp-prev');
-    var next = wrap.querySelector('.imp-next');
+    var track = wrap.querySelector('.'+trackClass);
+    var cards = wrap.querySelectorAll('.'+cardClass);
+    var dots = wrap.querySelectorAll('.'+dotsClass+' span');
+    var prev = wrap.querySelector('.'+prevClass);
+    var next = wrap.querySelector('.'+nextClass);
     if(!track || !cards.length) return;
     var current = 0;
     function setActive(i){
       current = Math.max(0, Math.min(cards.length-1, i));
-      dots.forEach(function(d, idx){ d.style.background = (idx===current) ? '#ffb800' : '#e0ddd4'; d.style.width = (idx===current) ? '24px' : '8px'; });
+      dots.forEach(function(d, idx){ d.style.background = (idx===current) ? activeColor : inactiveColor; d.style.width = (idx===current) ? '24px' : '8px'; });
     }
     function scrollTo(i){
       i = Math.max(0, Math.min(cards.length-1, i));
@@ -1972,7 +2038,6 @@
     prev && prev.addEventListener('click', function(){ scrollTo(current-1); });
     next && next.addEventListener('click', function(){ scrollTo(current+1); });
     dots.forEach(function(d){ d.style.cursor='pointer'; d.addEventListener('click', function(){ scrollTo(parseInt(d.getAttribute('data-i'))); }); });
-    // atualizar bolinha ao arrastar
     var t;
     track.addEventListener('scroll', function(){
       clearTimeout(t);
@@ -1989,8 +2054,12 @@
     });
     setActive(0);
   }
-  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initImpacto);
-  else initImpacto();
+  function initAll(){
+    initCarousel('.impacto-mobile', 'imp-track', 'imp-card', 'imp-dots', 'imp-prev', 'imp-next', '#ffb800', '#e0ddd4');
+    initCarousel('.quem-mobile', 'quem-track', 'quem-card', 'quem-dots', 'quem-prev', 'quem-next', '#009F44', '#d4e8da');
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initAll);
+  else initAll();
 })();
 </script>
 </body>
