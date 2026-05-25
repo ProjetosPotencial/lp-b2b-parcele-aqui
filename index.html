@@ -250,7 +250,13 @@
     .modelos-img-mobile { display: block !important; }
     /* Dobra modelos no mobile: zera padding-top (imagem encosta no topo). O container-fig também perde o padding-top. */
     section#modelos:not(#solucao) { padding-top: 0 !important; }
-    section#modelos .container-fig { padding-top: 0 !important; }
+    section#modelos .container-fig { padding-top: 0 !important; padding-left: 0 !important; padding-right: 0 !important; }
+    /* Dobra modelos: padding lateral de 25px para o container de texto caber 340px centralizado em telas de 390px. */
+    section#modelos { padding-left: 25px !important; padding-right: 25px !important; }
+    /* Container de texto da dobra modelos: 340px centralizado no mobile. */
+    .modelos-texto { width: 340px !important; max-width: 100% !important; margin-left: auto !important; margin-right: auto !important; padding-left: 0 !important; }
+    /* Imagem full bleed: compensa só os 25px da section (container-fig já está zerado). */
+    .modelos-img-mobile { margin-left: -25px !important; margin-right: -25px !important; width: calc(100% + 50px) !important; }
     /* Selos de certificação (dobra Segurança): zera o padding-left de 96px e permite quebra/encolhimento no mobile (evitava overflow horizontal). */
     .selos-cert { padding-left: 0 !important; }
     .selos-cert > div { flex-wrap: wrap !important; gap: 24px !important; }
@@ -1338,11 +1344,11 @@
   </div>
   <div class="container-fig relative">
 
-    <!-- Imagem do iMac no início da dobra — SOMENTE MOBILE. Full bleed: estoura os 60px de padding (36 section + 24 container-fig). Fundo branco atrás (áreas transparentes da imagem). -->
-    <img src="public/images/sections/secao-como-operar_2.webp" alt="Mockup do produto Parcele Aqui em tela de iMac" class="modelos-img-mobile" style="display: none; width: calc(100% + 120px); max-width: none; margin-left: -60px; margin-right: -60px; height: auto; margin-bottom: 32px; background: #ffffff;" />
+    <!-- Imagem do iMac no início da dobra — SOMENTE MOBILE. Full bleed. Fundo branco até 64px antes da base; nesses 64px finais o bege da dobra aparece (altura do mouse). -->
+    <img src="public/images/sections/secao-como-operar_2.webp" alt="Mockup do produto Parcele Aqui em tela de iMac" class="modelos-img-mobile" style="display: none; width: calc(100% + 120px); max-width: none; margin-left: -60px; margin-right: -60px; height: auto; margin-bottom: 32px; background: linear-gradient(to bottom, #ffffff calc(100% - 64px), transparent calc(100% - 64px));" />
 
     <!-- COLUNA ESQUERDA: Texto + cards (padding-left maior pra criar espaço) -->
-    <div class="relative z-10 lg:pl-24" style="max-width: 800px;">
+    <div class="modelos-texto relative z-10 lg:pl-24" style="max-width: 800px;">
       <!-- Kicker -->
       <p class="text-base font-medium text-brand-text-secondary leading-6">Flexibilidade para o seu modelo de negócio</p>
 
@@ -1408,7 +1414,7 @@
       <p class="content mt-6 text-brand-text-secondary" style="font-size: 16px; line-height: 24px;">Dois modelos, o mesmo objetivo: <strong class="font-bold">fechar mais negócios sem risco.</strong></p>
 
       <!-- CTA (font 18px, padding 24/16, shadow) -->
-      <a href="#cta" class="mt-6 inline-flex items-center justify-center bg-brand-yellow text-brand-text-primary btn-yellow-hover rounded-sm transition" style="padding: 16px 24px; font-size: 18px; line-height: 24px; letter-spacing: 0.75px; font-weight: 500; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Entender qual modelo faz mais sentido</a>
+      <a href="#cta" class="mt-6 inline-flex items-center justify-center bg-brand-yellow text-brand-text-primary btn-yellow-hover rounded-sm transition" style="padding: 16px 24px; font-size: 18px; line-height: 24px; letter-spacing: 0.75px; font-weight: 500; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Entender qual modelo escolher</a>
     </div>
   </div>
 </section>
