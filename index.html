@@ -236,6 +236,8 @@
     /* RESPIRO PADRÃO DO TOPO: 56px de padding-top em todas as dobras (Figma mobile).
        O hero (#solucao) é exceção: tem diagramação própria (imagem cola no topo). */
     section:not(#solucao) { padding-top: 56px !important; }
+    /* Aproxima o CTA "Simular uma operação" da imagem da dobra Como Funciona: 24px no mobile. Especificidade reforçada para superar a regra global com 3x :not(). Desktop mantém o padding inline de 96px. */
+    section#solucao-cta:not(#solucao):not(#como-funciona):not(#faq) { padding-bottom: 24px !important; }
     /* RESPIRO PADRÃO DA BASE: padding-bottom de desktop (96-140px) é excessivo no mobile.
        Padroniza em 56px. Seções com mobile dedicado/0 mantêm o seu. */
     section:not(#solucao):not(#como-funciona):not(#faq) { padding-bottom: 56px !important; }
@@ -843,7 +845,7 @@
 </section>
 
 <!-- ============ DOBRA 11 - SOLUÇÃO ============ -->
-<section class="bg-white relative" style="padding: 96px 107px 96px 107px;">
+<section id="solucao-cta" class="bg-white relative" style="padding: 96px 107px 96px 107px;">
   <div class="flex items-center" style="gap: 124px; max-width: 1153px; margin: 0 auto;">
     <!-- COLUNA ESQUERDA: Texto + bullets + CTA (w-466) -->
     <div class="flex flex-col flex-shrink-0" style="gap: 10px; width: 466px;">
