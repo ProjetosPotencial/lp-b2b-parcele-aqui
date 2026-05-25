@@ -432,6 +432,9 @@
     section [style*="grid-template-columns: repeat(2"] { grid-template-columns: 1fr !important; }
     /* EXCEÇÃO: grid de logos da Empresas fica em 2 colunas (mais compacto que 1) */
     #empresas [style*="grid-template-columns: repeat(4"] { grid-template-columns: repeat(2, 1fr) !important; row-gap: 32px !important; }
+    /* Logos não podem ultrapassar a largura da célula no mobile (max-width fixos do desktop
+       eram maiores que a célula e transbordavam, parecendo desalinhados à direita). */
+    #empresas [style*="grid-template-columns: repeat(4"] img { max-width: 100% !important; }
     /* flex de cards com altura fixa -> coluna, altura auto */
     section .flex[style*="height: 248px"],
     section .flex[style*="height: 160px"] { flex-direction: column !important; height: auto !important; gap: 16px !important; }
@@ -1459,11 +1462,11 @@
 </section>
 
 <!-- ============ DOBRA 16 - QUEM ESTÁ POR TRÁS ============ -->
-<section id="quem-somos" class="bg-white relative overflow-hidden" style="padding: 0 107px 40px 107px;">
+<section id="quem-somos" class="bg-white relative overflow-hidden" style="padding: 0 107px 24px 107px;">
   <!-- Shape verde decorativo (SVG oficial Figma 672×572). Ancorado à borda DIREITA da tela
        (sangra até o canto da página); o que passar é cortado pelo overflow-hidden da section.
        Fora do container centralizado pra poder colar na borda. Oculto no mobile (lá é carrossel). -->
-  <img loading="lazy" decoding="async" src="public/images/sections/shape-verde.svg" alt="" aria-hidden="true" class="quem-shape hidden lg:block absolute pointer-events-none" style="width: 672px; height: 572px; top: 55px; right: 0; z-index: 0;" />
+  <img loading="lazy" decoding="async" src="public/images/sections/shape-verde.svg" alt="" aria-hidden="true" class="quem-shape hidden lg:block absolute pointer-events-none" style="width: 693px; height: 572px; top: 55px; right: 0; z-index: 0;" />
   <div class="relative" style="max-width: 1153px; margin: 0 auto;">
 
     <!-- Container principal: texto à esquerda + cards à direita (vertically centered, gap 124px) -->
@@ -1627,7 +1630,7 @@
 </section>
 
 <!-- ============ DOBRA 17 - SEGURANÇA ============ -->
-<section class="bg-white relative" style="padding: 40px 107px 48px 107px;">
+<section class="bg-white relative" style="padding: 24px 107px 48px 107px;">
   <div class="grid items-start gap-6 lg:grid-cols-2" style="max-width: 1153px; margin: 0 auto;">
     <div>
       <span class="kicker">Segurança comprovada</span>
