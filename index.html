@@ -120,8 +120,8 @@
   };
 </script>
 <style>
-  html { scroll-behavior: smooth; }
-  body { font-family: 'DM Sans', system-ui, sans-serif; color: #2e2e2e; -webkit-font-smoothing: antialiased; }
+  html { scroll-behavior: smooth; overflow-x: clip; }
+  body { font-family: 'DM Sans', system-ui, sans-serif; color: #2e2e2e; -webkit-font-smoothing: antialiased; overflow-x: hidden; max-width: 100%; }
   h1, h2, h3, .heading { font-family: 'Kufam', system-ui, sans-serif; color: #371b01; }
   .h2 { font-size: 40px; line-height: 48px; letter-spacing: 0.5px; font-weight: 400; }
   .h4 { font-size: 20px; line-height: 24px; letter-spacing: 0.5px; font-weight: 700; }
@@ -1298,7 +1298,7 @@
   <!-- Topo do iMac ancorado no canto inferior direito, sangrando pra baixo.
        Recuo exato do Figma: imagem 670px de largura, left:768 no frame 1366 → sangra 72px além da borda direita.
        Encaixa com o resto do iMac (Imagem dobra 5) no início da Dobra Modelos abaixo. -->
-  <div class="hidden lg:block absolute pointer-events-none" style="right: -72px; bottom: -1px; width: 670px; z-index: 1;">
+  <div class="hidden lg:block absolute pointer-events-none" style="right: 72px; bottom: -1px; width: 670px; z-index: 1;">
     <img loading="lazy" decoding="async" src="public/images/sections/Imagem dobra 4.webp" alt="" aria-hidden="true" class="block w-full h-auto" />
   </div>
 
@@ -1323,11 +1323,11 @@
         <div style="display: grid; grid-template-columns: repeat(4, 1fr); row-gap: 48px; column-gap: 32px; align-items: center; justify-items: center;">
           <!-- Fileira 1 -->
           <img loading="lazy" decoding="async" src="public/images/logos/Bradesco default.svg" alt="Bradesco" class="object-contain" style="max-height: 72px; max-width: 180px;" />
-          <img loading="lazy" decoding="async" src="public/images/logos/Component 2.svg" alt="Banco do Brasil" class="object-contain" style="max-height: 72px; max-width: 180px;" />
+          <img loading="lazy" decoding="async" src="public/images/logos/Component 2.svg" alt="Banco do Brasil" class="object-contain" style="max-height: 88px; max-width: 200px;" />
           <img loading="lazy" decoding="async" src="public/images/logos/Component 3.svg" alt="Itaú" class="object-contain" style="max-height: 56px; max-width: 160px;" />
           <img loading="lazy" decoding="async" src="public/images/logos/Component 4.svg" alt="Western Union" class="object-contain" style="max-height: 56px; max-width: 160px;" />
           <!-- Fileira 2 -->
-          <img loading="lazy" decoding="async" src="public/images/logos/Component 7.jpg" alt="Contabilidade Diplomata" class="object-contain" style="max-height: 72px; max-width: 160px;" />
+          <img loading="lazy" decoding="async" src="public/images/logos/Component 7.jpg" alt="Contabilidade Diplomata" class="object-contain" style="max-height: 92px; max-width: 180px;" />
           <img loading="lazy" decoding="async" src="public/images/logos/Component 9.jpg" alt="Assescont" class="object-contain" style="max-height: 72px; max-width: 160px;" />
           <img loading="lazy" decoding="async" src="public/images/logos/Component 5.jpg" alt="SR Eis Contabilidade" class="object-contain" style="max-height: 72px; max-width: 160px;" />
           <img loading="lazy" decoding="async" src="public/images/logos/Component 6.jpg" alt="Capitale" class="object-contain" style="max-height: 56px; max-width: 160px;" />
@@ -1339,7 +1339,7 @@
           <!-- Fileira 4 -->
           <img loading="lazy" decoding="async" src="public/images/logos/Component 8.svg" alt="Protege" class="object-contain" style="max-height: 72px; max-width: 160px;" />
           <img loading="lazy" decoding="async" src="public/images/logos/Component 10.svg" alt="BRINKS" class="object-contain" style="max-height: 40px; max-width: 160px;" />
-          <img loading="lazy" decoding="async" src="public/images/logos/Component 11.svg" alt="Prosegur" class="object-contain" style="max-height: 64px; max-width: 180px;" />
+          <img loading="lazy" decoding="async" src="public/images/logos/Component 11.svg" alt="Prosegur" class="object-contain" style="max-height: 80px; max-width: 200px;" />
           <img loading="lazy" decoding="async" src="public/images/logos/Component 12.svg" alt="Prodesp" class="object-contain" style="max-height: 56px; max-width: 160px;" />
         </div>
       </div>
@@ -1352,7 +1352,7 @@
   <!-- Resto do iMac (tela + base + mouse) ancorado no topo-direito, sangrando.
        Mesmo recuo do Figma da metade de cima (670px, right:-72px) pra encaixe perfeito.
        Encaixa com o topo do iMac (Imagem dobra 4) que está no fim da Dobra Empresas acima. -->
-  <div class="hidden lg:block absolute pointer-events-none" style="right: -72px; top: 0; width: 670px; z-index: 1;">
+  <div class="hidden lg:block absolute pointer-events-none" style="right: 72px; top: 0; width: 670px; z-index: 1;">
     <img loading="lazy" decoding="async" src="public/images/sections/Imagem dobra 5.webp" alt="Mockup do produto Parcele Aqui em tela de iMac" class="block w-full h-auto" />
   </div>
   <div class="container-fig relative">
@@ -1433,7 +1433,7 @@
 </section>
 
 <!-- ============ DOBRA 16 - QUEM ESTÁ POR TRÁS ============ -->
-<section id="quem-somos" class="bg-white relative overflow-hidden" style="padding: 0 107px 96px 107px;">
+<section id="quem-somos" class="bg-white relative overflow-hidden" style="padding: 0 107px 40px 107px;">
   <div class="relative" style="max-width: 1153px; margin: 0 auto;">
 
     <!-- Shape verde decorativo (SVG oficial Figma 672×572, curva top-left 160px). Figma: left 694 top 134 no frame 1366/pad107 → left 587 relativo ao container 1153 -->
@@ -1600,7 +1600,7 @@
 </section>
 
 <!-- ============ DOBRA 17 - SEGURANÇA ============ -->
-<section class="bg-white relative" style="padding: 96px 107px 48px 107px;">
+<section class="bg-white relative" style="padding: 40px 107px 48px 107px;">
   <div class="grid items-start gap-6 lg:grid-cols-2" style="max-width: 1153px; margin: 0 auto;">
     <div>
       <span class="kicker">Segurança comprovada</span>
