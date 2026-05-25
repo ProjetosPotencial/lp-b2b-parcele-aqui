@@ -238,6 +238,10 @@
     section:not(#solucao) { padding-top: 56px !important; }
     /* A dobra Como Funciona controla seu espaço superior via .cf-mobile (24px). Zera o padding-top da section para não somar. */
     section#como-funciona:not(#solucao) { padding-top: 0 !important; }
+    /* Carrossel Impacto: esconde grade desktop, mostra carrossel no mobile */
+    .impacto-desktop { display: none !important; }
+    .impacto-mobile { display: block !important; }
+    .imp-track::-webkit-scrollbar { display: none; }
     /* Aproxima o CTA "Simular uma operação" da imagem da dobra Como Funciona: 32px no mobile. Especificidade reforçada para superar a regra global com 3x :not(). Desktop mantém o padding inline de 96px. */
     section#solucao-cta:not(#solucao):not(#como-funciona):not(#faq) { padding-bottom: 32px !important; }
     /* RESPIRO PADRÃO DA BASE: padding-bottom de desktop (96-140px) é excessivo no mobile.
@@ -1074,8 +1078,8 @@
       </div>
     </div>
 
-    <!-- GRID DE 6 CARDS (2 linhas × 3 colunas, gap-24, items-end) -->
-    <div class="flex flex-col w-full" style="gap: 24px;">
+    <!-- GRID DE 6 CARDS (2 linhas × 3 colunas, gap-24, items-end) — DESKTOP -->
+    <div class="impacto-desktop flex flex-col w-full" style="gap: 24px;">
 
       <!-- LINHA 1 -->
       <div class="flex w-full" style="gap: 24px; align-items: flex-end;">
@@ -1156,7 +1160,68 @@
       </div>
     </div>
 
-    <!-- CTA único centralizado (Inter Bold 18px, w-369, triple shadow) -->
+    <!-- ===== CARROSSEL MOBILE (<768px) — 1 card por vez + espiada, setas + bolinhas ===== -->
+    <div class="impacto-mobile" style="display: none; width: 100%;">
+      <!-- Trilho com scroll-snap -->
+      <div class="imp-track" style="display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 4px;">
+        <!-- Card 01 -->
+        <article class="imp-card" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #ffb800; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
+          <img src="public/images/icons/impacto-01.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
+          <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01; margin: 8px 0 0 0;">Mais conversão de vendas</h3>
+          <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">Aumente a conversão sem flexibilizar crédito internamente ou expor a empresa à inadimplência.</p>
+        </article>
+        <!-- Card 02 -->
+        <article class="imp-card" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #ffb800; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
+          <img src="public/images/icons/impacto-02.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
+          <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01; margin: 8px 0 0 0;">Redução do tempo de fechamento</h3>
+          <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">Menos renegociação de pagamento e mais agilidade para reconhecimento de receita.</p>
+        </article>
+        <!-- Card 03 -->
+        <article class="imp-card" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #ffb800; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
+          <img src="public/images/icons/impacto-03.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
+          <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01; margin: 8px 0 0 0;">Aumento do ticket médio</h3>
+          <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">Permita vendas de maior valor mantendo liquidação à vista e previsibilidade financeira.</p>
+        </article>
+        <!-- Card 04 -->
+        <article class="imp-card" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #ffb800; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
+          <img src="public/images/icons/impacto-04.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
+          <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01; margin: 8px 0 0 0;">Zero risco de inadimplência</h3>
+          <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">O risco da operação não fica com sua empresa. A liquidação ocorre à vista para o emissor.</p>
+        </article>
+        <!-- Card 05 -->
+        <article class="imp-card" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #ffb800; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
+          <img src="public/images/icons/impacto-05.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
+          <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01; margin: 8px 0 0 0;">Operação simples e escalável</h3>
+          <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">Escale vendas sem aumentar estrutura financeira, cobrança ou controle de crédito.</p>
+        </article>
+        <!-- Card 06 -->
+        <article class="imp-card" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #ffb800; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
+          <img src="public/images/icons/impacto-06.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
+          <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01; margin: 8px 0 0 0;">Mais valor percebido pelo cliente</h3>
+          <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">Flexibilidade de pagamento sem comprometer políticas financeiras ou margem.</p>
+        </article>
+      </div>
+
+      <!-- Controles: bolinhas à esquerda, setas juntas à direita -->
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 24px;">
+        <div class="imp-dots" style="display: flex; gap: 8px; align-items: center;">
+          <span data-i="0" style="width: 8px; height: 8px; border-radius: 999px; background: #ffb800; transition: all 0.2s;"></span>
+          <span data-i="1" style="width: 8px; height: 8px; border-radius: 999px; background: #e0ddd4; transition: all 0.2s;"></span>
+          <span data-i="2" style="width: 8px; height: 8px; border-radius: 999px; background: #e0ddd4; transition: all 0.2s;"></span>
+          <span data-i="3" style="width: 8px; height: 8px; border-radius: 999px; background: #e0ddd4; transition: all 0.2s;"></span>
+          <span data-i="4" style="width: 8px; height: 8px; border-radius: 999px; background: #e0ddd4; transition: all 0.2s;"></span>
+          <span data-i="5" style="width: 8px; height: 8px; border-radius: 999px; background: #e0ddd4; transition: all 0.2s;"></span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; flex-shrink: 0;">
+          <button type="button" class="imp-prev" aria-label="Anterior" style="width: 44px; height: 44px; border-radius: 999px; border: 1px solid #ffb800; background: #ffb800; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="#371b01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button type="button" class="imp-next" aria-label="Próximo" style="width: 44px; height: 44px; border-radius: 999px; border: 1px solid #ffb800; background: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#371b01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
     <div class="flex items-center justify-center w-full" style="gap: 24px;">
       <a href="#cta" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="width: 369px; padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Ver exemplos de uso</a>
     </div>
@@ -1882,5 +1947,51 @@
   })();
 </script>
 
+<script>
+(function(){
+  function initImpacto(){
+    var wrap = document.querySelector('.impacto-mobile');
+    if(!wrap) return;
+    var track = wrap.querySelector('.imp-track');
+    var cards = wrap.querySelectorAll('.imp-card');
+    var dots = wrap.querySelectorAll('.imp-dots span');
+    var prev = wrap.querySelector('.imp-prev');
+    var next = wrap.querySelector('.imp-next');
+    if(!track || !cards.length) return;
+    var current = 0;
+    function setActive(i){
+      current = Math.max(0, Math.min(cards.length-1, i));
+      dots.forEach(function(d, idx){ d.style.background = (idx===current) ? '#ffb800' : '#e0ddd4'; d.style.width = (idx===current) ? '24px' : '8px'; });
+    }
+    function scrollTo(i){
+      i = Math.max(0, Math.min(cards.length-1, i));
+      var card = cards[i];
+      track.scrollTo({ left: card.offsetLeft - (track.clientWidth - card.clientWidth)/2, behavior: 'smooth' });
+      setActive(i);
+    }
+    prev && prev.addEventListener('click', function(){ scrollTo(current-1); });
+    next && next.addEventListener('click', function(){ scrollTo(current+1); });
+    dots.forEach(function(d){ d.style.cursor='pointer'; d.addEventListener('click', function(){ scrollTo(parseInt(d.getAttribute('data-i'))); }); });
+    // atualizar bolinha ao arrastar
+    var t;
+    track.addEventListener('scroll', function(){
+      clearTimeout(t);
+      t = setTimeout(function(){
+        var center = track.scrollLeft + track.clientWidth/2;
+        var best=0, bestDist=Infinity;
+        cards.forEach(function(c, idx){
+          var cc = c.offsetLeft + c.clientWidth/2;
+          var dist = Math.abs(cc - center);
+          if(dist < bestDist){ bestDist = dist; best = idx; }
+        });
+        setActive(best);
+      }, 80);
+    });
+    setActive(0);
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initImpacto);
+  else initImpacto();
+})();
+</script>
 </body>
 </html>
