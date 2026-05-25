@@ -1294,12 +1294,12 @@
 </section>
 
 <!-- ============ DOBRA 7 - EMPRESAS QUE UTILIZAM ============ -->
-<section id="empresas" class="bg-white relative overflow-hidden" style="padding: 16px 107px 140px 107px;">
-  <!-- Topo do iMac ancorado no canto inferior direito, sangrando pra baixo.
-       Recuo exato do Figma: imagem 670px de largura, left:768 no frame 1366 → sangra 72px além da borda direita.
-       Encaixa com o resto do iMac (Imagem dobra 5) no início da Dobra Modelos abaixo. -->
-  <div class="hidden lg:block absolute pointer-events-none" style="right: 0; bottom: -1px; width: 670px; z-index: 1;">
-    <img loading="lazy" decoding="async" src="public/images/sections/Imagem dobra 4.webp" alt="" aria-hidden="true" class="block w-full h-auto" />
+<section id="empresas" class="bg-white relative" style="padding: 16px 107px 140px 107px; overflow-x: clip;">
+  <!-- iMac COMPLETO (imagem única) ancorado no canto inferior direito da dobra Empresas,
+       transbordando pra baixo até a dobra Modelos. Substitui as duas metades antigas
+       (Imagem dobra 4 + Imagem dobra 5) pra eliminar a emenda. right:0, width:670 = encostado na borda. -->
+  <div class="hidden lg:block absolute pointer-events-none" style="right: 0; bottom: -462px; width: 670px; z-index: 5;">
+    <img loading="lazy" decoding="async" src="public/images/sections/imac-completo.webp" alt="Mockup do produto Parcele Aqui em tela de iMac" class="block w-full h-auto" />
   </div>
 
   <div class="relative z-10 flex flex-col" style="gap: 72px; max-width: 1153px; margin: 0 auto;">
@@ -1348,13 +1348,9 @@
 </section>
 
 <!-- ============ DOBRA 4 - MODELOS ============ -->
-<section id="modelos" class="bg-brand-beige-light relative overflow-hidden" style="padding-top: 96px; padding-bottom: 72px;">
-  <!-- Resto do iMac (tela + base + mouse) ancorado no topo-direito, sangrando.
-       Mesmo recuo do Figma da metade de cima (670px, right:-72px) pra encaixe perfeito.
-       Encaixa com o topo do iMac (Imagem dobra 4) que está no fim da Dobra Empresas acima. -->
-  <div class="hidden lg:block absolute pointer-events-none" style="right: 0; top: 0; width: 670px; z-index: 1;">
-    <img loading="lazy" decoding="async" src="public/images/sections/Imagem dobra 5.webp" alt="Mockup do produto Parcele Aqui em tela de iMac" class="block w-full h-auto" />
-  </div>
+<section id="modelos" class="bg-brand-beige-light relative" style="padding-top: 96px; padding-bottom: 72px; overflow-x: clip;">
+  <!-- iMac removido daqui: agora é uma imagem única ancorada na dobra Empresas acima,
+       que transborda pra cá. Mantido só o iMac mobile (full bleed) abaixo. -->
   <div class="container-fig relative">
 
     <!-- Imagem do iMac no início da dobra — SOMENTE MOBILE. Full bleed. Fundo branco até 64px antes da base; nesses 64px finais o bege da dobra aparece (altura do mouse). -->
