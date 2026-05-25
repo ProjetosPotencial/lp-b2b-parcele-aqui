@@ -227,6 +227,12 @@
     /* mata scroll horizontal de qualquer elemento que vaze */
     html, body { overflow-x: hidden; max-width: 100%; width: 100%; }
     html { overflow-x: clip; }
+    /* CTA gargalo: texto curto no mobile, completo no desktop */
+    .cta-txt-desktop { display: none !important; }
+    .cta-txt-mobile { display: inline !important; }
+    /* Dobra CTA final: 56px acima da foto (só o padding da section), 32px da imagem ao kicker. */
+    #cta .cta-inner { padding-top: 0 !important; gap: 32px !important; }
+    #cta .cta-textcol { padding-top: 0 !important; }
 
     /* header mobile (Figma node 6027:13257): pad lateral 32, vertical 16, altura auto */
     #header .container-fig { height: auto !important; padding-top: 16px !important; padding-bottom: 16px !important; padding-left: 32px !important; padding-right: 32px !important; }
@@ -247,6 +253,8 @@
     .quem-desktop { display: none !important; }
     .quem-mobile { display: block !important; }
     .quem-track::-webkit-scrollbar { display: none; }
+    /* Cards "Quem está por trás" com a mesma altura dos cards da dobra Impacto */
+    .quem-card { min-height: 270px; }
     /* Imagem do iMac (dobra modelos) aparece só no mobile */
     .modelos-img-mobile { display: block !important; }
     /* Dobra modelos no mobile: zera padding-top (imagem encosta no topo). O container-fig também perde o padding-top. */
@@ -254,10 +262,10 @@
     section#modelos .container-fig { padding-top: 0 !important; padding-left: 0 !important; padding-right: 0 !important; }
     /* Container de texto da dobra modelos: fluído com 36px de margem (padrão da LP). */
     .modelos-texto { width: 100% !important; max-width: 100% !important; margin-left: 0 !important; margin-right: 0 !important; padding-left: 0 !important; }
-    /* Imagem full bleed: compensa os 36px da section (container-fig zerado). */
-    .modelos-img-mobile { margin-left: -36px !important; margin-right: -36px !important; width: calc(100% + 72px) !important; }
-    /* CTA da dobra modelos: fonte levemente menor no mobile para caber em uma linha dentro da margem de 36px. */
-    section#modelos a[href="#cta"] { font-size: 16px !important; padding-left: 16px !important; padding-right: 16px !important; }
+    /* Imagem full bleed: compensa os 36px da section (container-fig zerado). Margens simétricas = centralizada. */
+    .modelos-img-mobile { margin-left: -36px !important; margin-right: -36px !important; width: calc(100% + 72px) !important; display: block !important; object-fit: contain; object-position: center; }
+    /* CTA da dobra modelos: largura total do container (com os 36px de margem da section), em uma linha. */
+    section#modelos a[href="#cta"] { font-size: 16px !important; padding-left: 16px !important; padding-right: 16px !important; display: flex !important; width: 100% !important; max-width: 100% !important; }
     /* Selos de certificação (dobra Segurança) no mobile: empilhados verticalmente, centralizados, gap 56px entre todos (conforme Figma node 4010-14302). */
     .selos-cert { padding-left: 0 !important; padding-top: 40px !important; gap: 56px !important; align-items: stretch !important; }
     /* Cada linha vira coluna empilhada, centralizada, com gap 56px entre os selos internos */
@@ -899,7 +907,7 @@
 
       <!-- CTA (pt-14, font 18 Inter Bold, triple shadow) -->
       <div style="padding-top: 14px;">
-        <a href="#cta" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Entender se faz sentido para minha empresa</a>
+        <a href="#cta" class="inline-flex items-center justify-center bg-brand-yellow btn-yellow-hover rounded-sm transition" style="padding: 16px 24px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 18px; line-height: 24px; color: #371b01; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);"><span class="cta-txt-desktop">Entender se faz sentido para minha empresa</span><span class="cta-txt-mobile" style="display:none;">Quero saber mais</span></a>
       </div>
     </div>
   </div>
@@ -1313,8 +1321,8 @@
       <div class="w-full" style="padding: 24px 96px;">
         <div style="display: grid; grid-template-columns: repeat(4, 1fr); row-gap: 48px; column-gap: 32px; align-items: center; justify-items: center;">
           <!-- Fileira 1 -->
-          <img src="public/images/logos/Bradesco default.svg" alt="Bradesco" class="object-contain" style="max-height: 56px; max-width: 160px;" />
-          <img src="public/images/logos/Component 2.svg" alt="Banco do Brasil" class="object-contain" style="max-height: 56px; max-width: 160px;" />
+          <img src="public/images/logos/Bradesco default.svg" alt="Bradesco" class="object-contain" style="max-height: 72px; max-width: 180px;" />
+          <img src="public/images/logos/Component 2.svg" alt="Banco do Brasil" class="object-contain" style="max-height: 72px; max-width: 180px;" />
           <img src="public/images/logos/Component 3.svg" alt="Itaú" class="object-contain" style="max-height: 56px; max-width: 160px;" />
           <img src="public/images/logos/Component 4.svg" alt="Western Union" class="object-contain" style="max-height: 56px; max-width: 160px;" />
           <!-- Fileira 2 -->
@@ -1330,7 +1338,7 @@
           <!-- Fileira 4 -->
           <img src="public/images/logos/Component 8.svg" alt="Protege" class="object-contain" style="max-height: 72px; max-width: 160px;" />
           <img src="public/images/logos/Component 10.svg" alt="BRINKS" class="object-contain" style="max-height: 40px; max-width: 160px;" />
-          <img src="public/images/logos/Component 11.svg" alt="Prosegur" class="object-contain" style="max-height: 48px; max-width: 160px;" />
+          <img src="public/images/logos/Component 11.svg" alt="Prosegur" class="object-contain" style="max-height: 64px; max-width: 180px;" />
           <img src="public/images/logos/Component 12.svg" alt="Prodesp" class="object-contain" style="max-height: 56px; max-width: 160px;" />
         </div>
       </div>
@@ -1418,7 +1426,7 @@
       <p class="content mt-6 text-brand-text-secondary" style="font-size: 16px; line-height: 24px;">Dois modelos, o mesmo objetivo: <strong class="font-bold">fechar mais negócios sem risco.</strong></p>
 
       <!-- CTA (font 18px, padding 24/16, shadow) -->
-      <a href="#cta" class="mt-6 inline-flex items-center justify-center bg-brand-yellow text-brand-text-primary btn-yellow-hover rounded-sm transition" style="padding: 16px 24px; font-size: 18px; line-height: 24px; letter-spacing: 0.75px; font-weight: 500; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Entender qual modelo escolher</a>
+      <a href="#cta" class="mt-6 inline-flex items-center justify-center bg-brand-yellow text-brand-text-primary btn-yellow-hover rounded-sm transition" style="padding: 16px 24px; font-size: 18px; line-height: 24px; letter-spacing: 0.75px; font-weight: 700; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.08), 0 0 16px rgba(0,0,0,0.08);">Entender qual modelo escolher</a>
     </div>
   </div>
 </section>
@@ -1733,8 +1741,8 @@
 
   <!-- ===== VERSÃO MOBILE FAQ (<768px) — Figma node 4010:14467 (412px) ===== -->
   <div class="faq-mobile" style="display: none; position: relative; padding: 0;">
-    <!-- Topo branco (continua a dobra de cima): foto com canto tr arredondado revela BRANCO, não bege -->
-    <div style="background: #fff; padding-top: 8px;">
+    <!-- Topo: foto com canto tr arredondado revela o fundo BEGE da dobra -->
+    <div style="background: #f8f6f0; padding-top: 8px;">
       <!-- Foto topo, largura cheia (Figma Appearance: cantos tl 0, tr 240, br 0, bl 0 — só top-right arredondado). Foto SEM shape amarelo.
            TODO: trocar src por webp mobile limpa (sem amarelo) exportada do Figma; por ora crop esconde o amarelo do PNG desktop -->
       <div style="position: relative; width: 100%; aspect-ratio: 412 / 421; overflow: hidden; border-radius: 0 240px 0 0;">
@@ -1849,7 +1857,7 @@
   <div class="relative" style="max-width: 1153px; margin: 0 auto;">
 
     <!-- Container interno: foto à esquerda + texto à direita, gap 124, padding-top 56 -->
-    <div class="relative flex items-center" style="gap: 124px; padding-top: 56px;">
+    <div class="cta-inner relative flex items-center" style="gap: 124px; padding-top: 56px;">
 
       <!-- COLUNA ESQUERDA: PNG transparente com foto + shape amarelo embutidos -->
       <div class="flex-shrink-0" style="width: 466px;">
@@ -1857,7 +1865,7 @@
       </div>
 
       <!-- COLUNA DIREITA: Kicker + Headline + Body + CTA -->
-      <div class="flex flex-col flex-shrink-0" style="gap: 10px; padding-top: 40px; width: 466px;">
+      <div class="cta-textcol flex flex-col flex-shrink-0" style="gap: 10px; padding-top: 40px; width: 466px;">
 
         <!-- Kicker -->
         <div style="padding: 4px 0;">
@@ -2109,21 +2117,21 @@
     setActive(0);
   }
   function fixTitleBreaks(){
-    // No mobile, os <br/> dos títulos h2 foram pensados para o desktop e geram
+    // No mobile, os <br/> dos títulos e parágrafos foram pensados para o desktop e geram
     // quebras feias. Substitui por espaço para deixar o texto quebrar naturalmente.
     // Guarda o HTML original em data-attr para poder restaurar se voltar ao desktop.
-    var titles = document.querySelectorAll('section h2');
+    var els = document.querySelectorAll('section h2, section p');
     var isMobile = window.innerWidth <= 767;
-    titles.forEach(function(h2){
-      if(h2.dataset.origHtml === undefined){ h2.dataset.origHtml = h2.innerHTML; }
+    els.forEach(function(el){
+      if(el.dataset.origHtml === undefined){ el.dataset.origHtml = el.innerHTML; }
       if(isMobile){
         // substitui qualquer <br> por espaço
-        if(h2.querySelector('br')){
-          h2.innerHTML = h2.dataset.origHtml.replace(/<br\s*\/?>/gi, ' ');
+        if(el.querySelector('br')){
+          el.innerHTML = el.dataset.origHtml.replace(/<br\s*\/?>/gi, ' ');
         }
       } else {
         // restaura original no desktop
-        if(h2.innerHTML !== h2.dataset.origHtml){ h2.innerHTML = h2.dataset.origHtml; }
+        if(el.innerHTML !== el.dataset.origHtml){ el.innerHTML = el.dataset.origHtml; }
       }
     });
   }
