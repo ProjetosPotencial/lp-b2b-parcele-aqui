@@ -982,13 +982,18 @@
     <!-- Wrapper conteúdo (largura total disponível: tela - 36px lateral via padding do cf-mobile) -->
     <div style="position: relative; width: 100%; margin: 0 auto; z-index: 1;">
 
-      <!-- Foto portrait com texto sobreposto na base. Figma: 340x580. Cantos tl32 tr160 bl32 br32 -->
+      <!-- Foto portrait + título sobre a base. Figma: 340x580. Foto e card com 36px lateral; shape amarelo full-bleed atrás. -->
       <div style="position: relative; width: 100%;">
-        <div style="position: relative; width: 100%; aspect-ratio: 340 / 580; overflow: hidden; background-image: url('public/images/sections/secao-como-funciona-mobile.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-          <!-- Máscara, radius e gradiente da base já vêm embutidos na imagem exportada do Figma -->
 
-          <!-- Texto branco sobreposto na parte de baixo da foto (subido para dar espaço ao card) -->
-          <div style="position: absolute; bottom: 76px; left: 0; padding: 0 32px; width: 100%; display: flex; flex-direction: column; gap: 8px;">
+        <!-- Shape amarelo full-bleed atrás de foto e card. top sobe ~140px atrás da base da foto: 74.2% da altura da foto = (100vw-72px) × 580/340 × 0.742. bottom:0 ancora na base do card. -->
+        <div aria-hidden="true" style="position: absolute; left: -36px; right: -36px; top: calc((100vw - 72px) * 580 / 340 * 0.742); bottom: 0; background: #ffb800; z-index: 0;"></div>
+
+        <!-- Foto como img real -->
+        <div style="position: relative; width: 100%; aspect-ratio: 340 / 580; z-index: 1;">
+          <img src="public/images/sections/secao-como-funciona-mobile.webp" alt="Como funciona na prática" style="position: relative; display: block; width: 100%; height: 100%; object-fit: cover; z-index: 1;" />
+
+          <!-- Texto branco sobreposto na parte de baixo da foto -->
+          <div style="position: absolute; bottom: 76px; left: 0; padding: 0 32px; width: 100%; display: flex; flex-direction: column; gap: 8px; z-index: 2;">
             <p style="font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 16px; line-height: 24px; color: #f8f6f0; margin: 0;">Como funciona na prática</p>
             <h2 style="font-family: 'Kufam', sans-serif; font-size: 32px; line-height: 40px; letter-spacing: 0.2px; color: #f8f6f0; font-weight: 400; margin: 0;">
               <span style="font-weight: 400;">Simples, rápido </span><span style="font-weight: 700;">e 100% digital.</span>
@@ -996,10 +1001,8 @@
           </div>
         </div>
 
-        <!-- Card creme sobrepondo MAIS a base da foto. padding-bottom:56px cria a faixa amarela inferior de forma estável (sem bottom negativo). -->
+        <!-- Card creme sobrepondo a base da foto. padding-bottom:56px = faixa amarela inferior estável. -->
         <div style="position: relative; margin-top: -56px; padding-bottom: 56px; z-index: 2;">
-          <!-- Shape amarelo full-bleed: preenche TODO este container (inclui os 56px de padding-bottom) e sobe 56px atrás da transição foto→card. Robusto em qualquer navegador. -->
-          <div aria-hidden="true" style="position: absolute; background: #ffb800; left: -36px; right: -36px; top: -56px; bottom: 0; z-index: -1;"></div>
           <div style="background: #f8f6f0; border-radius: 32px; padding: 56px 32px 32px 32px; display: flex; flex-direction: column;">
             <!-- Passo 01 -->
             <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px;">
