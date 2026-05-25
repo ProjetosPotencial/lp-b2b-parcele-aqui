@@ -225,7 +225,8 @@
      ============================================================ */
   @media (max-width: 767px) {
     /* mata scroll horizontal de qualquer elemento que vaze */
-    html, body { overflow-x: hidden; max-width: 100%; }
+    html, body { overflow-x: hidden; max-width: 100%; width: 100%; }
+    html { overflow-x: clip; }
 
     /* header mobile (Figma node 6027:13257): pad lateral 32, vertical 16, altura auto */
     #header .container-fig { height: auto !important; padding-top: 16px !important; padding-bottom: 16px !important; padding-left: 32px !important; padding-right: 32px !important; }
@@ -251,17 +252,19 @@
     /* Dobra modelos no mobile: zera padding-top (imagem encosta no topo). O container-fig também perde o padding-top. */
     section#modelos:not(#solucao) { padding-top: 0 !important; }
     section#modelos .container-fig { padding-top: 0 !important; padding-left: 0 !important; padding-right: 0 !important; }
-    /* Dobra modelos: padding lateral de 25px para o container de texto caber 340px centralizado em telas de 390px. */
-    section#modelos { padding-left: 25px !important; padding-right: 25px !important; }
-    /* Container de texto da dobra modelos: 340px centralizado no mobile. */
-    .modelos-texto { width: 340px !important; max-width: 100% !important; margin-left: auto !important; margin-right: auto !important; padding-left: 0 !important; }
-    /* Imagem full bleed: compensa só os 25px da section (container-fig já está zerado). */
-    .modelos-img-mobile { margin-left: -25px !important; margin-right: -25px !important; width: calc(100% + 50px) !important; }
+    /* Container de texto da dobra modelos: fluído com 36px de margem (padrão da LP). */
+    .modelos-texto { width: 100% !important; max-width: 100% !important; margin-left: 0 !important; margin-right: 0 !important; padding-left: 0 !important; }
+    /* Imagem full bleed: compensa os 36px da section (container-fig zerado). */
+    .modelos-img-mobile { margin-left: -36px !important; margin-right: -36px !important; width: calc(100% + 72px) !important; }
+    /* CTA da dobra modelos: fonte levemente menor no mobile para caber em uma linha dentro da margem de 36px. */
+    section#modelos a[href="#cta"] { font-size: 16px !important; padding-left: 16px !important; padding-right: 16px !important; }
     /* Selos de certificação (dobra Segurança) no mobile: empilhados verticalmente, centralizados, gap 56px entre todos (conforme Figma node 4010-14302). */
     .selos-cert { padding-left: 0 !important; padding-top: 40px !important; gap: 56px !important; align-items: stretch !important; }
     /* Cada linha vira coluna empilhada, centralizada, com gap 56px entre os selos internos */
     .selos-cert > div { flex-direction: column !important; align-items: center !important; gap: 56px !important; padding-top: 0 !important; }
     .selos-cert img { max-width: 100%; height: auto !important; max-height: 56px; }
+    /* Logo DPO maior que os demais selos (conforme Figma) */
+    .selos-cert img.selo-dpo { max-height: 88px !important; }
 
     /* ALINHAMENTO À ESQUERDA DOS CABEÇALHOS NO MOBILE (kicker + título + subtítulo).
        Mira nos blocos de header (div.flex-col.items-start que contém um h2) e neutraliza
@@ -1601,7 +1604,7 @@
       <div class="flex items-center" style="gap: 56px; padding-top: 24px;">
         <img src="public/images/logos/Component 18.svg" alt="Cielo" class="object-contain" style="height: 62px;" />
         <img src="public/images/logos/Component 19.svg" alt="PCI DSS Compliant" class="object-contain" style="height: 66px;" />
-        <img src="public/images/logos/Component 20.svg" alt="DPO Oficial" class="object-contain" style="height: 80px;" />
+        <img src="public/images/logos/Component 20.svg" alt="DPO Oficial" class="object-contain selo-dpo" style="height: 80px;" />
       </div>
       <div class="flex items-center" style="gap: 24px; padding-top: 24px;">
         <img src="public/images/logos/Component 21.svg" alt="Credenciado Senatran" class="object-contain" style="height: 57px;" />
