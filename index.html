@@ -238,8 +238,8 @@
     section:not(#solucao) { padding-top: 56px !important; }
     /* A dobra Como Funciona controla seu espaço superior via .cf-mobile (24px). Zera o padding-top da section para não somar. */
     section#como-funciona:not(#solucao) { padding-top: 0 !important; }
-    /* Aproxima o CTA "Simular uma operação" da imagem da dobra Como Funciona: 16px no mobile. Especificidade reforçada para superar a regra global com 3x :not(). Desktop mantém o padding inline de 96px. */
-    section#solucao-cta:not(#solucao):not(#como-funciona):not(#faq) { padding-bottom: 16px !important; }
+    /* Aproxima o CTA "Simular uma operação" da imagem da dobra Como Funciona: 32px no mobile. Especificidade reforçada para superar a regra global com 3x :not(). Desktop mantém o padding inline de 96px. */
+    section#solucao-cta:not(#solucao):not(#como-funciona):not(#faq) { padding-bottom: 32px !important; }
     /* RESPIRO PADRÃO DA BASE: padding-bottom de desktop (96-140px) é excessivo no mobile.
        Padroniza em 56px. Seções com mobile dedicado/0 mantêm o seu. */
     section:not(#solucao):not(#como-funciona):not(#faq) { padding-bottom: 56px !important; }
@@ -982,7 +982,7 @@
   </div><!-- /cf-desktop -->
 
   <!-- ===== VERSÃO MOBILE (<768px) — Figma node 4010:13909 (412px) PIXEL PERFECT ===== -->
-  <div class="cf-mobile" style="display: none; position: relative; padding: 24px 0 56px 0;">
+  <div class="cf-mobile" style="display: none; position: relative; padding: 48px 0 56px 0;">
     <!-- Wrapper conteúdo (largura total disponível: tela - 36px lateral via padding do cf-mobile) -->
     <div style="position: relative; width: 100%; margin: 0 auto; z-index: 1;">
 
