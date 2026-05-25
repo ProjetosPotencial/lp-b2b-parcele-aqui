@@ -273,6 +273,9 @@
     .quem-desktop { display: none !important; }
     .quem-mobile { display: block !important; }
     .quem-track::-webkit-scrollbar { display: none; }
+    /* Blur amarelo decorativo: no mobile, reposiciona pra entrar na tela (antes ficava quase todo
+       fora à esquerda em left:-200). Mais visível mas ainda suave. */
+    #infraestrutura .blur-amarelo { left: -40px !important; top: -40px !important; height: 80% !important; max-width: 80% !important; }
     /* Defensivo: reveals dentro das versões DESKTOP ocultas (impacto/quem viram carrossel no
        mobile) nunca disparam o observer por estarem em display:none. Neutraliza o estado inicial
        pra não ficarem presos em opacity:0 caso a estrutura mude. */
@@ -588,8 +591,12 @@
 <section id="solucao" class="bg-white relative" style="padding: 32px 107px 32px 107px;">
   <div class="hero-wrap flex items-start justify-center w-full" style="max-width: 1153px; margin: 0 auto;">
 
-    <!-- HERO SLIDER (3 slides) -->
-    <div id="hero-slider" class="flex items-start w-full" style="padding-top: 0;" data-current="0" data-total="3">
+    <!-- HERO SLIDER (3 slides)
+         data-slider-enabled controla o modo do hero:
+           "false" = HERO ESTÁTICO (mostra só o slide 0, sem setas/bolinhas/autoplay) — modo atual
+           "true"  = SLIDER ATIVO (3 slides com autoplay e controles)
+         O slider permanece 100% no código; trocar para "true" reativa tudo (futuro, via CRM/painel). -->
+    <div id="hero-slider" class="flex items-start w-full" style="padding-top: 0;" data-current="0" data-total="3" data-slider-enabled="false">
 
       <!-- ===== COLUNA ESQUERDA: Texto (3 variações) + botões FIXOS ===== -->
       <div class="hero-col-text flex-1 flex flex-col relative" style="padding-top: 56px; gap: 8px; max-width: 600px; min-height: 540px;">
@@ -710,9 +717,11 @@
     #solucao .hero-col-img { order: -1 !important; width: 100% !important; position: relative !important; }
     /* mobile usa a imagem dedicada (formato domo) como background do box */
     #solucao .hero-img-box {
-      width: 100% !important;
-      margin-left: 0 !important;
-      margin-right: 0 !important;
+      /* Hero estático no mobile: imagem maior, sangrando até as bordas da tela
+         (anula os 36px laterais da section). */
+      width: calc(100% + 72px) !important;
+      margin-left: -36px !important;
+      margin-right: -36px !important;
       height: auto !important;
       aspect-ratio: 689 / 696;
       background-image: url('public/images/sections/hero-slide-mobile-1.webp');
@@ -767,6 +776,20 @@
 (function() {
   const slider = document.getElementById('hero-slider');
   if (!slider) return;
+
+  // Flag: hero estático (false) vs. slider ativo (true). Controlado pelo atributo data-slider-enabled.
+  const sliderEnabled = slider.dataset.sliderEnabled === 'true';
+  if (!sliderEnabled) {
+    // HERO ESTÁTICO: mostra só o slide 0, esconde controles (setas + bolinhas), sem autoplay.
+    var prevB = document.getElementById('hero-prev');
+    var nextB = document.getElementById('hero-next');
+    var dotsWrap = slider.querySelector('.hero-dots');
+    if (prevB) prevB.style.display = 'none';
+    if (nextB) nextB.style.display = 'none';
+    if (dotsWrap) dotsWrap.style.display = 'none';
+    // Garante o slide 0 visível e os demais ocultos (estado já é esse por padrão no HTML).
+    return; // não inicializa o slider
+  }
 
   const total = parseInt(slider.dataset.total, 10);
   let current = 0;
@@ -829,7 +852,7 @@
 <!-- ============ DOBRA 10 - INFRAESTRUTURA ============ -->
 <section id="infraestrutura" class="bg-white relative" style="padding: 80px 107px 64px 107px;">
   <!-- Blur amarelo decorativo à esquerda (SVG oficial do Figma, extrapola pra dobra abaixo) -->
-  <img loading="lazy" decoding="async" src="public/images/sections/blur-amarelo.svg" alt="" aria-hidden="true" class="absolute -z-0 pointer-events-none" style="left: -200px; top: -100px; height: 160%; width: auto; max-width: 70%;" />
+  <img loading="lazy" decoding="async" src="public/images/sections/blur-amarelo.svg" alt="" aria-hidden="true" class="blur-amarelo absolute -z-0 pointer-events-none" style="left: -80px; top: -100px; height: 180%; width: auto; max-width: 90%;" />
 
   <div class="relative z-10 flex flex-col" style="gap: 48px; max-width: 1153px; margin: 0 auto;">
     <!-- Header centralizado -->
