@@ -453,8 +453,44 @@
     section [style*="gap: 72px"] > div:has(img),
     section [style*="gap: 64px"] > div:has(img) { order: -1 !important; }
   }
+
+  /* ============ MICROINTERAÇÕES ============ */
+  /* Scroll reveal: estado inicial (invisível, levemente abaixo) -> revelado.
+     Só transform/opacity (GPU, sem reflow). Aplicado via JS com IntersectionObserver. */
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); will-change: opacity, transform; }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  /* Stagger: atrasos progressivos para grupos de elementos */
+  .reveal[data-delay="1"] { transition-delay: 0.08s; }
+  .reveal[data-delay="2"] { transition-delay: 0.16s; }
+  .reveal[data-delay="3"] { transition-delay: 0.24s; }
+  .reveal[data-delay="4"] { transition-delay: 0.32s; }
+  .reveal[data-delay="5"] { transition-delay: 0.40s; }
+
+  /* Hover nos cards: leve elevação + sombra (transform/box-shadow, sem reflow) */
+  .card-hover { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+  @media (hover: hover) {
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(55,27,1,0.10), 0 4px 10px rgba(55,27,1,0.06); }
+  }
+
+  /* Fade-in suave de imagens grandes ao decodificar (evita "pop" brusco) */
+  img.img-fade { opacity: 0; transition: opacity 0.5s ease; }
+  img.img-fade.is-loaded { opacity: 1; }
+
+  /* CTA flutuante: entrada suave + pulse discreto na 1ª aparição */
+  @keyframes cta-in { from { opacity: 0; transform: translateY(12px) scale(0.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
+  @keyframes cta-pulse { 0%,100% { box-shadow: 0 6px 20px rgba(0,0,0,0.18), 0 0 0 0 rgba(37,211,102,0.45); } 50% { box-shadow: 0 6px 20px rgba(0,0,0,0.18), 0 0 0 10px rgba(37,211,102,0); } }
+  #cta-flutuante { animation: cta-in 0.5s cubic-bezier(0.16,1,0.3,1) 0.6s both; }
+  #cta-flutuante.pulse-once { animation: cta-in 0.5s cubic-bezier(0.16,1,0.3,1) both, cta-pulse 2s ease-in-out 1s 2; }
+
+  /* Acessibilidade: respeita quem prefere menos movimento — desliga tudo */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .card-hover { transition: none !important; }
+    .card-hover:hover { transform: none !important; }
+    img.img-fade { opacity: 1 !important; transition: none !important; }
+    #cta-flutuante, #cta-flutuante.pulse-once { animation: none !important; }
+  }
 </style>
-</head>
 <body class="bg-white">
 
 <!-- ============ HEADER ============ -->
@@ -815,7 +851,7 @@
     <!-- 4 cards (h-248 items-end, gap-24) -->
     <div class="infra-cards flex w-full" style="gap: 24px; height: 248px;">
       <!-- Card 01: Liquidação à vista e sem risco (file com $) -->
-      <article class="flex flex-col items-start justify-center" style="background: #f8f6f0; border: 2px solid #ffb800; border-radius: 32px; padding: 24px 14px; flex: 1 0 0; max-width: 368px; min-width: 270px; height: 100%;">
+      <article class="flex flex-col items-start justify-center card-hover reveal" data-delay="1" style="background: #f8f6f0; border: 2px solid #ffb800; border-radius: 32px; padding: 24px 14px; flex: 1 0 0; max-width: 368px; min-width: 270px; height: 100%;">
         <div class="flex flex-col" style="gap: 8px;">
           <!-- Ícone request_quote (oficial Figma) -->
           <img loading="lazy" decoding="async" src="public/images/icons/infra-01.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;" />
@@ -825,7 +861,7 @@
       </article>
 
       <!-- Card 02: Infraestrutura certificada e escalável (lock) -->
-      <article class="flex flex-col items-start justify-center" style="background: #f8f6f0; border: 2px solid #ffb800; border-radius: 32px; padding: 24px 14px; flex: 1 0 0; max-width: 368px; min-width: 270px; height: 100%;">
+      <article class="flex flex-col items-start justify-center card-hover reveal" data-delay="2" style="background: #f8f6f0; border: 2px solid #ffb800; border-radius: 32px; padding: 24px 14px; flex: 1 0 0; max-width: 368px; min-width: 270px; height: 100%;">
         <div class="flex flex-col" style="gap: 8px;">
           <!-- Ícone lock (oficial Figma) -->
           <img loading="lazy" decoding="async" src="public/images/icons/infra-02.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;" />
@@ -835,7 +871,7 @@
       </article>
 
       <!-- Card 03: Plataforma 100% digital e automatizada (flowchart) -->
-      <article class="flex flex-col items-start justify-center" style="background: #f8f6f0; border: 2px solid #ffb800; border-radius: 32px; padding: 24px 14px; flex: 1 0 0; max-width: 368px; min-width: 270px; height: 100%;">
+      <article class="flex flex-col items-start justify-center card-hover reveal" data-delay="3" style="background: #f8f6f0; border: 2px solid #ffb800; border-radius: 32px; padding: 24px 14px; flex: 1 0 0; max-width: 368px; min-width: 270px; height: 100%;">
         <div class="flex flex-col" style="gap: 8px;">
           <!-- Ícone flowchart (oficial Figma) -->
           <img loading="lazy" decoding="async" src="public/images/icons/infra-03.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;" />
@@ -845,7 +881,7 @@
       </article>
 
       <!-- Card 04: Fintech brasileira especializada em B2B (chip com $) -->
-      <article class="flex flex-col items-start justify-center" style="background: #f8f6f0; border: 2px solid #ffb800; border-radius: 32px; padding: 24px 14px; flex: 1 0 0; max-width: 368px; min-width: 270px; height: 100%;">
+      <article class="flex flex-col items-start justify-center card-hover reveal" data-delay="4" style="background: #f8f6f0; border: 2px solid #ffb800; border-radius: 32px; padding: 24px 14px; flex: 1 0 0; max-width: 368px; min-width: 270px; height: 100%;">
         <div class="flex flex-col" style="gap: 8px;">
           <!-- Ícone chip com $ (oficial Figma) -->
           <img loading="lazy" decoding="async" src="public/images/icons/infra-04.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;" />
@@ -888,7 +924,7 @@
     <!-- COLUNA ESQUERDA: Foto com shape amarelo atrás -->
     <div class="relative flex-shrink-0" style="width: 563px; height: 521px;">
       <!-- PNG transparente com foto + shape amarelo embutidos -->
-      <img loading="lazy" decoding="async" src="public/images/sections/secao-gargalo.png" alt="Profissional confiante em ambiente comercial" class="block" style="width: 100%; height: auto;" />
+      <img loading="lazy" decoding="async" src="public/images/sections/secao-gargalo.png" alt="Profissional confiante em ambiente comercial" class="block img-fade" style="width: 100%; height: auto;" />
     </div>
 
     <!-- COLUNA DIREITA: Texto + bullets + CTA -->
@@ -1004,7 +1040,7 @@
 
     <!-- COLUNA DIREITA: PNG transparente com foto + shape amarelo embutidos -->
     <div class="flex-shrink-0" style="width: 563px;">
-      <img loading="lazy" decoding="async" src="public/images/sections/secao-solucao.png" alt="Profissional confiante em ambiente B2B" class="block" style="width: 100%; height: auto;" />
+      <img loading="lazy" decoding="async" src="public/images/sections/secao-solucao.png" alt="Profissional confiante em ambiente B2B" class="block img-fade" style="width: 100%; height: auto;" />
     </div>
   </div>
 </section>
@@ -1022,7 +1058,7 @@
     <!-- Container imagem (webp com foto + vinheta embutida, cantos arredondados do Figma) -->
     <div class="relative" style="width: 1153px; z-index: 1;">
       <!-- Foto base (webp RGBA com vinheta já embutida) -->
-      <img loading="lazy" decoding="async" src="public/images/sections/secao-como-funciona.webp" alt="Profissional sorridente em ambiente moderno" class="block" style="width: 100%; height: auto;" />
+      <img loading="lazy" decoding="async" src="public/images/sections/secao-como-funciona.webp" alt="Profissional sorridente em ambiente moderno" class="block img-fade" style="width: 100%; height: auto;" />
 
       <!-- Texto sobreposto (Figma: bloco top 345 na imagem, pl-32, gap kicker->título 8px, base título→card 24px) -->
       <div class="absolute" style="top: 345px; left: 0; padding-left: 32px; width: 1153px; display: flex; flex-direction: column; gap: 8px;">
@@ -1181,7 +1217,7 @@
       <!-- LINHA 1 -->
       <div class="flex w-full" style="gap: 24px; align-items: flex-end;">
         <!-- Card 01: Mais conversão de vendas (trending-up) -->
-        <article class="flex flex-col items-start" style="background: #f8f6f0; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
+        <article class="flex flex-col items-start card-hover reveal" data-delay="1" style="background: #f8f6f0; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
           <div class="flex flex-col w-full" style="gap: 8px; border-radius: 16px; overflow: hidden;">
             <!-- Ícone trending-up (oficial Figma) -->
             <img loading="lazy" decoding="async" src="public/images/icons/impacto-01.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;" />
@@ -1193,7 +1229,7 @@
         </article>
 
         <!-- Card 02: Redução do tempo de fechamento (timer/clock) -->
-        <article class="flex flex-col items-start" style="background: #f8f6f0; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
+        <article class="flex flex-col items-start card-hover reveal" data-delay="2" style="background: #f8f6f0; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
           <div class="flex flex-col w-full" style="gap: 8px; border-radius: 16px; overflow: hidden;">
             <!-- Ícone timer/clock (oficial Figma) -->
             <img loading="lazy" decoding="async" src="public/images/icons/impacto-02.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;" />
@@ -1205,7 +1241,7 @@
         </article>
 
         <!-- Card 03: Aumento do ticket médio (credit-card) -->
-        <article class="flex flex-col items-start" style="background: #f8f6f0; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
+        <article class="flex flex-col items-start card-hover reveal" data-delay="3" style="background: #f8f6f0; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
           <div class="flex flex-col w-full" style="gap: 8px; border-radius: 16px; overflow: hidden;">
             <!-- Ícone credit-card (oficial Figma) -->
             <img loading="lazy" decoding="async" src="public/images/icons/impacto-03.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;" />
@@ -1220,7 +1256,7 @@
       <!-- LINHA 2 -->
       <div class="flex w-full" style="gap: 24px; align-items: flex-end;">
         <!-- Card 04: Zero risco de inadimplência (shield-check) -->
-        <article class="flex flex-col items-start" style="background: #f8f6f0; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
+        <article class="flex flex-col items-start card-hover reveal" data-delay="4" style="background: #f8f6f0; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
           <div class="flex flex-col w-full" style="gap: 8px; border-radius: 16px; overflow: hidden;">
             <!-- Ícone shield (oficial Figma) -->
             <img loading="lazy" decoding="async" src="public/images/icons/impacto-04.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;" />
@@ -1232,7 +1268,7 @@
         </article>
 
         <!-- Card 05: Operação simples e escalável (layers) -->
-        <article class="flex flex-col items-start" style="background: #f8f6f0; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
+        <article class="flex flex-col items-start card-hover reveal" data-delay="5" style="background: #f8f6f0; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
           <div class="flex flex-col w-full" style="gap: 8px; border-radius: 16px; overflow: hidden;">
             <!-- Ícone layers (oficial Figma) -->
             <img loading="lazy" decoding="async" src="public/images/icons/impacto-05.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;" />
@@ -1244,7 +1280,7 @@
         </article>
 
         <!-- Card 06: Mais valor percebido pelo cliente (star) -->
-        <article class="flex flex-col items-start" style="background: #f8f6f0; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
+        <article class="flex flex-col items-start card-hover reveal" data-delay="5" style="background: #f8f6f0; border: 2px solid #e6ac00; border-radius: 32px; padding: 32px; flex: 1 0 0; min-width: 270px;">
           <div class="flex flex-col w-full" style="gap: 8px; border-radius: 16px; overflow: hidden;">
             <!-- Ícone star (oficial Figma) -->
             <img loading="lazy" decoding="async" src="public/images/icons/impacto-06.svg" alt="" aria-hidden="true" style="width: 48px; height: 48px;" />
@@ -1262,37 +1298,37 @@
       <!-- Trilho com scroll-snap -->
       <div class="imp-track" style="display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 4px;">
         <!-- Card 01 -->
-        <article class="imp-card" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #ffb800; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
+        <article class="imp-card card-hover" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #ffb800; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
           <img loading="lazy" decoding="async" src="public/images/icons/impacto-01.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
           <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01; margin: 8px 0 0 0;">Mais conversão de vendas</h3>
           <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">Aumente a conversão sem flexibilizar crédito internamente ou expor a empresa à inadimplência.</p>
         </article>
         <!-- Card 02 -->
-        <article class="imp-card" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #ffb800; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
+        <article class="imp-card card-hover" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #ffb800; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
           <img loading="lazy" decoding="async" src="public/images/icons/impacto-02.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
           <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01; margin: 8px 0 0 0;">Redução do tempo de fechamento</h3>
           <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">Menos renegociação de pagamento e mais agilidade para reconhecimento de receita.</p>
         </article>
         <!-- Card 03 -->
-        <article class="imp-card" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #ffb800; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
+        <article class="imp-card card-hover" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #ffb800; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
           <img loading="lazy" decoding="async" src="public/images/icons/impacto-03.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
           <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01; margin: 8px 0 0 0;">Aumento do ticket médio</h3>
           <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">Permita vendas de maior valor mantendo liquidação à vista e previsibilidade financeira.</p>
         </article>
         <!-- Card 04 -->
-        <article class="imp-card" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #ffb800; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
+        <article class="imp-card card-hover" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #ffb800; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
           <img loading="lazy" decoding="async" src="public/images/icons/impacto-04.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
           <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01; margin: 8px 0 0 0;">Zero risco de inadimplência</h3>
           <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">O risco da operação não fica com sua empresa. A liquidação ocorre à vista para o emissor.</p>
         </article>
         <!-- Card 05 -->
-        <article class="imp-card" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #ffb800; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
+        <article class="imp-card card-hover" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #ffb800; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
           <img loading="lazy" decoding="async" src="public/images/icons/impacto-05.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
           <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01; margin: 8px 0 0 0;">Operação simples e escalável</h3>
           <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">Escale vendas sem aumentar estrutura financeira, cobrança ou controle de crédito.</p>
         </article>
         <!-- Card 06 -->
-        <article class="imp-card" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #ffb800; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
+        <article class="imp-card card-hover" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #ffb800; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
           <img loading="lazy" decoding="async" src="public/images/icons/impacto-06.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
           <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01; margin: 8px 0 0 0;">Mais valor percebido pelo cliente</h3>
           <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">Flexibilidade de pagamento sem comprometer políticas financeiras ou margem.</p>
@@ -1569,37 +1605,37 @@
     <div class="quem-mobile" style="display: none; width: 100%;">
       <div class="quem-track" style="display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 4px;">
         <!-- Card 01 -->
-        <article class="quem-card" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #009F44; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
+        <article class="quem-card card-hover" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #009F44; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
           <img loading="lazy" decoding="async" src="public/images/icons/quem-01.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
           <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01; margin: 8px 0 0 0;">25 anos de mercado</h3>
           <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">Desenvolvendo soluções digitais</p>
         </article>
         <!-- Card 02 -->
-        <article class="quem-card" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #009F44; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
+        <article class="quem-card card-hover" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #009F44; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
           <img loading="lazy" decoding="async" src="public/images/icons/quem-02.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
           <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01; margin: 8px 0 0 0;">100% digital</h3>
           <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">Plataforma totalmente online e automatizada</p>
         </article>
         <!-- Card 03 -->
-        <article class="quem-card" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #009F44; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
+        <article class="quem-card card-hover" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #009F44; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
           <img loading="lazy" decoding="async" src="public/images/icons/quem-03.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
           <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01; margin: 8px 0 0 0;">24/07 disponibilidade</h3>
           <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">Sistema operando ininterruptamente</p>
         </article>
         <!-- Card 04 -->
-        <article class="quem-card" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #009F44; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
+        <article class="quem-card card-hover" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #009F44; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
           <img loading="lazy" decoding="async" src="public/images/icons/quem-04.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
           <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01; margin: 8px 0 0 0;">Infraestrutura</h3>
           <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">robusta e certificada</p>
         </article>
         <!-- Card 05 -->
-        <article class="quem-card" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #009F44; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
+        <article class="quem-card card-hover" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #009F44; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
           <img loading="lazy" decoding="async" src="public/images/icons/quem-05.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
           <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01; margin: 8px 0 0 0;">Parcerias</h3>
           <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">corporativas e governamentais</p>
         </article>
         <!-- Card 06 -->
-        <article class="quem-card" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #009F44; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
+        <article class="quem-card card-hover" style="scroll-snap-align: center; flex: 0 0 85%; background: #f8f6f0; border: 1px solid #009F44; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px;">
           <img loading="lazy" decoding="async" src="public/images/icons/quem-06.svg" alt="" aria-hidden="true" style="width: 44px; height: 44px;" />
           <h3 style="font-family: 'Kufam', sans-serif; font-weight: 700; font-size: 20px; line-height: 24px; letter-spacing: 0.5px; color: #371b01; margin: 8px 0 0 0;">Especialista</h3>
           <p style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: #2e2e2e; margin: 0;">em meios de pagamento e automação de transações</p>
@@ -1891,7 +1927,7 @@
 
       <!-- COLUNA ESQUERDA: PNG transparente com foto + shape amarelo embutidos -->
       <div class="flex-shrink-0" style="width: 466px;">
-        <img loading="lazy" decoding="async" src="public/images/sections/secao-cta-final.png" alt="Profissional sorridente usando cartão de crédito e smartphone" class="block" style="width: 100%; height: auto;" />
+        <img loading="lazy" decoding="async" src="public/images/sections/secao-cta-final.png" alt="Profissional sorridente usando cartão de crédito e smartphone" class="block img-fade" style="width: 100%; height: auto;" />
       </div>
 
       <!-- COLUNA DIREITA: Kicker + Headline + Body + CTA -->
@@ -2165,6 +2201,42 @@
       }
     });
   }
+  function initMicrointeractions(){
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // 1) SCROLL REVEAL — revela elementos .reveal ao entrarem na viewport
+    var revealEls = document.querySelectorAll('.reveal');
+    if(reduce || !('IntersectionObserver' in window)){
+      // Sem animação: mostra tudo imediatamente (fallback acessível)
+      revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+    } else {
+      var ro = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){ e.target.classList.add('is-visible'); ro.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      revealEls.forEach(function(el){ ro.observe(el); });
+    }
+
+    // 2) FADE-IN DE IMAGENS — suaviza o "pop" ao carregar
+    document.querySelectorAll('img.img-fade').forEach(function(img){
+      if(img.complete && img.naturalWidth > 0){ img.classList.add('is-loaded'); }
+      else { img.addEventListener('load', function(){ img.classList.add('is-loaded'); }); 
+             img.addEventListener('error', function(){ img.classList.add('is-loaded'); }); }
+    });
+
+    // 3) PULSE ÚNICO DO CTA FLUTUANTE — chama atenção 1x quando o usuário rola além do hero
+    var cta = document.getElementById('cta-flutuante');
+    if(cta && !reduce){
+      var pulsed = false;
+      window.addEventListener('scroll', function onScroll(){
+        if(!pulsed && window.scrollY > window.innerHeight * 0.8){
+          pulsed = true; cta.classList.add('pulse-once');
+          window.removeEventListener('scroll', onScroll);
+        }
+      }, { passive: true });
+    }
+  }
   function initAll(){
     // Links de menu/footer ainda sem destino final (Entrar, Política, Termos, etc.):
     // previne o salto ao topo até que as URLs reais sejam definidas. PENDENTE: definir hrefs.
@@ -2174,6 +2246,7 @@
     initCarousel('.impacto-mobile', 'imp-track', 'imp-card', 'imp-dots', 'imp-prev', 'imp-next', '#ffb800', '#e0ddd4');
     initCarousel('.quem-mobile', 'quem-track', 'quem-card', 'quem-dots', 'quem-prev', 'quem-next', '#009F44', '#d4e8da');
     fixTitleBreaks();
+    initMicrointeractions();
     var rt;
     window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(fixTitleBreaks, 150); });
   }
