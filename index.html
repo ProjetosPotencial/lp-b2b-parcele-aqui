@@ -253,6 +253,16 @@
     .quem-desktop { display: none !important; }
     .quem-mobile { display: block !important; }
     .quem-track::-webkit-scrollbar { display: none; }
+    /* Carrosséis sangram até a borda direita no mobile: anulam os 36px laterais da section
+       (margem negativa) e recriam 36px de padding interno -> 1º card alinhado ao título,
+       2º card (e seguintes) vazam até a borda direita mostrando um pedaço. */
+    .imp-track, .quem-track {
+      margin-left: -36px !important;
+      margin-right: -36px !important;
+      padding-left: 36px !important;
+      padding-right: 36px !important;
+      scroll-padding-left: 36px !important;
+    }
     /* Cards "Quem está por trás" com a mesma altura dos cards da dobra Impacto */
     .quem-card { min-height: 270px; }
     /* Imagem do iMac (dobra modelos) aparece só no mobile */
@@ -914,7 +924,7 @@
 </section>
 
 <!-- ============ DOBRA 11 - SOLUÇÃO ============ -->
-<section id="solucao-cta" class="bg-white relative" style="padding: 96px 107px 96px 107px;">
+<section id="solucao-cta" class="bg-white relative" style="padding: 96px 107px 64px 107px;">
   <div class="flex items-center" style="gap: 124px; max-width: 1153px; margin: 0 auto;">
     <!-- COLUNA ESQUERDA: Texto + bullets + CTA (w-466) -->
     <div class="flex flex-col flex-shrink-0" style="gap: 10px; width: 466px;">
@@ -979,7 +989,7 @@
 <!-- ============ DOBRA 12 - COMO FUNCIONA ============ -->
 <section id="como-funciona" class="bg-white relative">
   <!-- ===== VERSÃO DESKTOP (>=768px) ===== -->
-  <div class="cf-desktop" style="padding: 72px 107px 96px 107px;">
+  <div class="cf-desktop" style="padding: 48px 107px 40px 107px;">
   <!-- Container relative para posicionamentos absolutos -->
   <div class="relative" style="width: 1153px; max-width: 100%; margin: 0 auto;">
 
@@ -1116,7 +1126,7 @@
 </style>
 
 <!-- ============ DOBRA 2 - IMPACTO B2B ============ -->
-<section class="bg-white relative" style="padding: 40px 107px 56px 107px;">
+<section class="bg-white relative" style="padding: 24px 107px 56px 107px;">
   <div class="flex flex-col w-full" style="gap: 40px; max-width: 1153px; margin: 0 auto;">
 
     <!-- HEADER (Context + Kicker v2) -->
