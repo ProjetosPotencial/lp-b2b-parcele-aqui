@@ -246,6 +246,35 @@
     .quem-desktop { display: none !important; }
     .quem-mobile { display: block !important; }
     .quem-track::-webkit-scrollbar { display: none; }
+
+    /* ALINHAMENTO À ESQUERDA DOS CABEÇALHOS NO MOBILE (kicker + título + subtítulo).
+       Mira nos blocos de header (div.flex-col.items-start que contém um h2) e neutraliza
+       o text-center / justify-center internos. Não afeta CTAs nem conteúdo dos cards. */
+    section .flex.flex-col.items-start:has(> div h2),
+    section .flex.flex-col.items-start:has(> h2) {
+      align-items: stretch !important;
+    }
+    section .flex.flex-col.items-start:has(> div h2) > div,
+    section .flex.flex-col.items-start:has(> h2) {
+      justify-content: flex-start !important;
+      text-align: left !important;
+    }
+    section .flex.flex-col.items-start:has(h2) h2.text-center,
+    section .flex.flex-col.items-start:has(h2) p.text-center {
+      text-align: left !important;
+    }
+    /* Subtítulos com padding lateral grande (ex: padding: 16px 196px) zeram o lateral no mobile via regra existente; garante alinhamento à esquerda */
+    section .flex.flex-col.items-start:has(h2) > div[style*="padding: 16px 196px"] { text-align: left !important; }
+
+    /* Cabeçalhos com h2.text-center soltos (infraestrutura, empresas): alinha título e subtítulo à esquerda.
+       Mira no h2.text-center e seu container flex justify-center (que NÃO é items-center, pra não pegar CTA). */
+    section h2.text-center { text-align: left !important; }
+    section div.flex.justify-center:not(.items-center):has(> h2),
+    section div.flex.justify-center:not(.items-center):has(> p) { justify-content: flex-start !important; }
+    /* Todos os parágrafos de cabeçalho (kicker/subtítulo) centralizados → esquerda no mobile. CTA usa <a>, não é afetado. */
+    section p.text-center { text-align: left !important; }
+    /* Wrappers de cabeçalho com items-center (ex: empresas) → alinhar itens à esquerda */
+    section .flex.flex-col.items-center:has(h2) { align-items: flex-start !important; }
     /* Aproxima o CTA "Simular uma operação" da imagem da dobra Como Funciona: 32px no mobile. Especificidade reforçada para superar a regra global com 3x :not(). Desktop mantém o padding inline de 96px. */
     section#solucao-cta:not(#solucao):not(#como-funciona):not(#faq) { padding-bottom: 32px !important; }
     /* RESPIRO PADRÃO DA BASE: padding-bottom de desktop (96-140px) é excessivo no mobile.
@@ -268,13 +297,15 @@
     /* QUEBRAS DE TEXTO: headlines de 40px (desktop) ficam grandes demais e quebram
        feio no mobile. Reduz para 28px/34px. Hero e Como Funciona têm regra própria. */
     section:not(#solucao):not(#como-funciona) h2[style*="font-size: 40px"] {
-      font-size: 28px !important;
-      line-height: 34px !important;
+      font-size: 32px !important;
+      line-height: 38px !important;
     }
 
-    /* TIPOGRAFIA MOBILE: títulos de dobra (h2 40px desktop) -> 28px no mobile.
+    /* TIPOGRAFIA MOBILE: títulos de dobra (h2 40px desktop) -> 32px no mobile.
        Evita quebras feias e títulos gigantes. Hero (h1) tem regra própria. */
-    section h2[style*="font-size: 40px"] { font-size: 28px !important; line-height: 34px !important; }
+    section h2[style*="font-size: 40px"] { font-size: 32px !important; line-height: 38px !important; }
+    /* Títulos que usam classe .heading (ex: dobra Segurança) sem font-size inline */
+    section h2.heading { font-size: 32px !important; line-height: 38px !important; }
 
     /* containers fixos viram fluidos */
     section [style*="max-width: 1153px"],
@@ -771,7 +802,7 @@
     #infraestrutura { padding-bottom: 48px !important; }
     #infraestrutura > div { gap: 24px !important; }
     /* cabeçalho: tipografia mobile */
-    #infraestrutura h2 { font-size: 28px !important; line-height: 34px !important; }
+    #infraestrutura h2 { font-size: 32px !important; line-height: 38px !important; }
     /* subtitle: remove o padding lateral gigante do desktop */
     #infraestrutura div[style*="padding: 16px 174px"] { padding: 16px 0 0 0 !important; }
     /* cards: empilhados verticalmente, largura total */
@@ -2054,9 +2085,31 @@
     });
     setActive(0);
   }
+  function fixTitleBreaks(){
+    // No mobile, os <br/> dos títulos h2 foram pensados para o desktop e geram
+    // quebras feias. Substitui por espaço para deixar o texto quebrar naturalmente.
+    // Guarda o HTML original em data-attr para poder restaurar se voltar ao desktop.
+    var titles = document.querySelectorAll('section h2');
+    var isMobile = window.innerWidth <= 767;
+    titles.forEach(function(h2){
+      if(h2.dataset.origHtml === undefined){ h2.dataset.origHtml = h2.innerHTML; }
+      if(isMobile){
+        // substitui qualquer <br> por espaço
+        if(h2.querySelector('br')){
+          h2.innerHTML = h2.dataset.origHtml.replace(/<br\s*\/?>/gi, ' ');
+        }
+      } else {
+        // restaura original no desktop
+        if(h2.innerHTML !== h2.dataset.origHtml){ h2.innerHTML = h2.dataset.origHtml; }
+      }
+    });
+  }
   function initAll(){
     initCarousel('.impacto-mobile', 'imp-track', 'imp-card', 'imp-dots', 'imp-prev', 'imp-next', '#ffb800', '#e0ddd4');
     initCarousel('.quem-mobile', 'quem-track', 'quem-card', 'quem-dots', 'quem-prev', 'quem-next', '#009F44', '#d4e8da');
+    fixTitleBreaks();
+    var rt;
+    window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(fixTitleBreaks, 150); });
   }
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initAll);
   else initAll();
