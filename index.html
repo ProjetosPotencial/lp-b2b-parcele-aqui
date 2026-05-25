@@ -273,6 +273,10 @@
     .quem-desktop { display: none !important; }
     .quem-mobile { display: block !important; }
     .quem-track::-webkit-scrollbar { display: none; }
+    /* Defensivo: reveals dentro das versões DESKTOP ocultas (impacto/quem viram carrossel no
+       mobile) nunca disparam o observer por estarem em display:none. Neutraliza o estado inicial
+       pra não ficarem presos em opacity:0 caso a estrutura mude. */
+    .impacto-desktop .reveal, .quem-desktop .reveal { opacity: 1 !important; transform: none !important; }
     /* Carrosséis sangram até a borda direita no mobile: anulam os 36px laterais da section
        (margem negativa) e recriam 36px de padding interno -> 1º card alinhado ao título,
        2º card (e seguintes) vazam até a borda direita mostrando um pedaço. */
@@ -986,7 +990,7 @@
 <section id="solucao-cta" class="bg-white relative" style="padding: 96px 107px 64px 107px;">
   <div class="flex items-center" style="gap: 124px; max-width: 1153px; margin: 0 auto;">
     <!-- COLUNA ESQUERDA: Texto + bullets + CTA (w-466) -->
-    <div class="flex flex-col flex-shrink-0" style="gap: 10px; width: 466px;">
+    <div class="reveal flex flex-col flex-shrink-0" style="gap: 10px; width: 466px;">
       <!-- Kicker -->
       <div style="padding-bottom: 4px;">
         <p style="font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 16px; line-height: 24px; color: #2e2e2e;">Solução Parcele Aqui</p>
@@ -1039,7 +1043,7 @@
     </div>
 
     <!-- COLUNA DIREITA: PNG transparente com foto + shape amarelo embutidos -->
-    <div class="flex-shrink-0" style="width: 563px;">
+    <div class="reveal flex-shrink-0" data-delay="1" style="width: 563px;">
       <img loading="lazy" decoding="async" src="public/images/sections/secao-solucao.png" alt="Profissional confiante em ambiente B2B" class="block img-fade" style="width: 100%; height: auto;" />
     </div>
   </div>
@@ -1372,7 +1376,7 @@
   </div>
 
   <div class="relative z-10 flex flex-col" style="gap: 72px; max-width: 1153px; margin: 0 auto;">
-    <div class="flex flex-col items-center w-full">
+    <div class="reveal flex flex-col items-center w-full">
       <!-- Kicker -->
       <p class="text-brand-text-secondary text-center" style="font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 16px; line-height: 24px; padding-bottom: 4px;">Empresas que já utilizam</p>
 
@@ -1668,7 +1672,7 @@
 <!-- ============ DOBRA 17 - SEGURANÇA ============ -->
 <section class="bg-white relative" style="padding: 24px 107px 48px 107px;">
   <div class="grid items-start gap-6 lg:grid-cols-2" style="max-width: 1153px; margin: 0 auto;">
-    <div>
+    <div class="reveal">
       <span class="kicker">Segurança comprovada</span>
       <h2 class="heading h2 mt-4">Excelência e confiança <strong class="font-extrabold">em cada transação</strong></h2>
       <p class="content mt-6 text-brand-text-secondary" style="max-width: 467px;">A parceria com a Cielo, uma das principais adquirentes do mercado, reforça a confiabilidade no processamento de pagamentos seguro, eficiente e de alta performance.</p>
@@ -1926,12 +1930,12 @@
     <div class="cta-inner relative flex items-center" style="gap: 124px; padding-top: 56px;">
 
       <!-- COLUNA ESQUERDA: PNG transparente com foto + shape amarelo embutidos -->
-      <div class="flex-shrink-0" style="width: 466px;">
+      <div class="reveal flex-shrink-0" style="width: 466px;">
         <img loading="lazy" decoding="async" src="public/images/sections/secao-cta-final.png" alt="Profissional sorridente usando cartão de crédito e smartphone" class="block img-fade" style="width: 100%; height: auto;" />
       </div>
 
       <!-- COLUNA DIREITA: Kicker + Headline + Body + CTA -->
-      <div class="cta-textcol flex flex-col flex-shrink-0" style="gap: 10px; padding-top: 40px; width: 466px;">
+      <div class="reveal cta-textcol flex flex-col flex-shrink-0" data-delay="1" style="gap: 10px; padding-top: 40px; width: 466px;">
 
         <!-- Kicker -->
         <div style="padding: 4px 0;">
