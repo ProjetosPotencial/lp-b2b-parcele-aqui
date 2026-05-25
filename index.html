@@ -246,6 +246,15 @@
     .quem-desktop { display: none !important; }
     .quem-mobile { display: block !important; }
     .quem-track::-webkit-scrollbar { display: none; }
+    /* Imagem do iMac (dobra modelos) aparece só no mobile */
+    .modelos-img-mobile { display: block !important; }
+    /* Dobra modelos no mobile: zera padding-top (imagem encosta no topo). O container-fig também perde o padding-top. */
+    section#modelos:not(#solucao) { padding-top: 0 !important; }
+    section#modelos .container-fig { padding-top: 0 !important; }
+    /* Selos de certificação (dobra Segurança): zera o padding-left de 96px e permite quebra/encolhimento no mobile (evitava overflow horizontal). */
+    .selos-cert { padding-left: 0 !important; }
+    .selos-cert > div { flex-wrap: wrap !important; gap: 24px !important; }
+    .selos-cert img { max-width: 100%; height: auto !important; max-height: 56px; }
 
     /* ALINHAMENTO À ESQUERDA DOS CABEÇALHOS NO MOBILE (kicker + título + subtítulo).
        Mira nos blocos de header (div.flex-col.items-start que contém um h2) e neutraliza
@@ -1319,7 +1328,7 @@
 </section>
 
 <!-- ============ DOBRA 4 - MODELOS ============ -->
-<section class="bg-brand-beige-light relative overflow-hidden" style="padding-top: 96px; padding-bottom: 72px;">
+<section id="modelos" class="bg-brand-beige-light relative overflow-hidden" style="padding-top: 96px; padding-bottom: 72px;">
   <!-- Resto do iMac (tela + base + mouse) ancorado no topo-direito, sangrando.
        Mesmo recuo do Figma da metade de cima (670px, right:-72px) pra encaixe perfeito.
        Encaixa com o topo do iMac (Imagem dobra 4) que está no fim da Dobra Empresas acima. -->
@@ -1328,8 +1337,8 @@
   </div>
   <div class="container-fig relative">
 
-    <!-- Imagem do iMac no início da dobra — SOMENTE MOBILE (lg:hidden). Full bleed: estoura os 60px de padding (36 section + 24 container-fig). -->
-    <img src="public/images/sections/secao-como-operar_2.webp" alt="Mockup do produto Parcele Aqui em tela de iMac" class="lg:hidden block" style="width: calc(100% + 120px); max-width: none; margin-left: -60px; margin-right: -60px; height: auto; margin-bottom: 32px;" />
+    <!-- Imagem do iMac no início da dobra — SOMENTE MOBILE. Full bleed: estoura os 60px de padding (36 section + 24 container-fig). -->
+    <img src="public/images/sections/secao-como-operar_2.webp" alt="Mockup do produto Parcele Aqui em tela de iMac" class="modelos-img-mobile" style="display: none; width: calc(100% + 120px); max-width: none; margin-left: -60px; margin-right: -60px; height: auto; margin-bottom: 32px;" />
 
     <!-- COLUNA ESQUERDA: Texto + cards (padding-left maior pra criar espaço) -->
     <div class="relative z-10 lg:pl-24" style="max-width: 800px;">
@@ -1580,7 +1589,7 @@
       <p class="content mt-4 text-brand-text-secondary" style="max-width: 467px;">Com infraestrutura certificada e padrões rigorosos de segurança o Parcele Aqui garante operações confiáveis, escaláveis e em conformidade regulatória.</p>
     </div>
     <!-- 5 selos: 3 em cima (gap 56px) + 2 embaixo (gap 24px), alinhados à esquerda (Figma: pl-96 pt-64) -->
-    <div class="flex flex-col" style="gap: 16px; padding-left: 96px; padding-top: 64px;">
+    <div class="selos-cert flex flex-col" style="gap: 16px; padding-left: 96px; padding-top: 64px;">
       <div class="flex items-center" style="gap: 56px; padding-top: 24px;">
         <img src="public/images/logos/Component 18.svg" alt="Cielo" class="object-contain" style="height: 62px;" />
         <img src="public/images/logos/Component 19.svg" alt="PCI DSS Compliant" class="object-contain" style="height: 66px;" />
