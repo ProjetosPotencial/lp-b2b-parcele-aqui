@@ -909,6 +909,17 @@
     #solucao .hero-dots { position: static !important; justify-content: flex-end !important; padding: 12px 4px 0 0 !important; margin-top: 0 !important; width: 100% !important; }
   }
 </style>
+<style>
+  /* CORREÇÃO HERO (desktop ≥1024px): com o slider DESATIVADO, a área dos slides flui com o
+     conteúdo em vez de usar altura fixa (min-height:430px) + slides absolutos. Isso evita que
+     os botões subam por cima dos bullets quando o texto do hero é mais alto, sem gerar espaço
+     morto em telas largas. OBS: se reativar o slider (data-slider-enabled="true"), remover este
+     bloco para voltar à área de altura fixa (que mantém os botões estáveis entre slides). */
+  @media (min-width: 1024px) {
+    #solucao .hero-slides-area { min-height: 0 !important; }
+    #solucao .hero-slides-area .hero-slide { position: relative !important; }
+  }
+</style>
 
 
 <!-- ============ HERO SLIDER SCRIPT ============ -->
